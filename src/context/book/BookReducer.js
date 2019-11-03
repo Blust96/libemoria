@@ -10,30 +10,42 @@ import {
 export default (state, action) => {
 
     switch(action.type) {
-        
-        case ADD_BOOK:
-            return {
-                ...state
-            };
 
         case GET_BOOKS:
             return {
-                ...state
+                ...state,
+                books: action.payload,
+                isLoading: false
+            };
+        
+        case ADD_BOOK:
+            return {
+                ...state,
+                books: action.payload.books,
+                book: action.payload.addedBook,
+                isLoading: false
             };
 
         case SET_BOOK:
             return {
-                ...state
+                ...state,
+                book: action.payload,
+                isLoading: false
             };
 
         case MODIFY_BOOK:
             return {
-                ...state
+                ...state,
+                books: action.payload.books,
+                book: action.payload.modifiedBook,
+                isLoading: false
             };
 
         case REMOVE_BOOK:
             return {
-                ...state
+                ...state,
+                books: action.payload.books,
+                isLoading: false
             };
 
         case IS_LOADING:
