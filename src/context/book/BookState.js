@@ -35,54 +35,62 @@ const BookState = props => {
     }
 
     // Set current book
-    const setBook = async props => {
+    const setBook = async book => {
 
         isLoading();
 
         dispatch({
             type: SET_BOOK,
-            payload: props
+            payload: book
         });
 
     }
 
     // Add book
-    const addBook = async props => {
+    const addBook = async (books, props) => {
 
         isLoading();
         const res = await createBook(props);
         const addedBook = await getBook(res.id);
 
+        books = [...books, addedBook];
+
         dispatch({
             type: ADD_BOOK,
-            payload: addedBook
+            payload: { books, addedBook }
         });
 
     }
 
     // Modify book
-    const modifyBook = async props => {
+    const modifyBook = async (books, props) => {
 
         isLoading();
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
+        // TODO:
+        // Update books array with the modified book
+
         dispatch({
             type: MODIFY_BOOK,
-            payload: modifiedBook
+            payload: { books, modifiedBook }
         });
 
     }
 
     // Remove book
-    const removeBook = async id => {
+    const removeBook = async (books, id) => {
 
         isLoading();
         const res = await deleteBook(id);
 
+        // TODO:
+        // Update books array with the deleted book
+
         dispatch({
             type: REMOVE_BOOK,
-            payload: { id: res._id }
+            payload: { books }
         })
 
     }
