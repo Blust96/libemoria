@@ -96,7 +96,7 @@ const deleteBook = async id => {
 
 }
 
-export default {
+export {
     getBooks,
     getBook,
     createBook,
