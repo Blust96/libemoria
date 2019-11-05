@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LoadingView from '../layout/LoadingView';
 import EmptyBooks from './EmptyBooks';
+import CreateBook from './CreateBook';
+import BooksList from './BooksList';
 
 import BookContext from '../../context/book/BookContext';
 
@@ -19,7 +22,12 @@ const Books = () => {
         return <EmptyBooks />
     else {
         return (
-            <p>Books page !</p>
+            <Router>
+                <Switch>
+                    <Route exact path='/' component={BooksList} />
+                    <Route exact path="/create" component={CreateBook} />
+                </Switch>
+            </Router>
         )
     }
 
