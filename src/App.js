@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Home from './components/pages/Home';
+import Books from './components/books/Books';
+import CreateBook from './components/books/CreateBook';
 import NotFound from './components/pages/NotFound';
 
 import BookState from './context/book/BookState';
@@ -14,7 +15,8 @@ function App() {
             <Router>
                 <div className="App">
                     <Switch>
-                        <Route exact path='/' component={Home} />
+                        <Route exact path='/' component={Books} />
+                        <Route exact path="/create" component={CreateBook} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>
