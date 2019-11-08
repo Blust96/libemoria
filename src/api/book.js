@@ -49,7 +49,12 @@ const createBook = async props => {
             title: props.title,
             author: props.author,
             genre: props.genre,
-            isbn: props.isbn
+            isbn: props.isbn,
+            description: props.description,
+            coverPath: props.coverPath,
+            favorite: props.favorite,
+            read: props.read,
+            wish: props.wish
         });
         return res;
     } catch(err) {
