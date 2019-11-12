@@ -18,7 +18,7 @@ function App() {
                     <Switch>
                         <Route exact path='/' component={Books} />
                         <Route exact path='/create' component={CreateBook} />
-                        <Route path='/details/:id' component={BookDetails} />
+                        <Route exact path='/details/:id' component={BookDetails} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>

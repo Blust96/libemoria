@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
 
-const BookDetails = () => {
-
-    let { id } = useParams();
+const BookDetails = ({ match }) => {
 
     return (
         <Fragment>
-            <h1>{ id }</h1>
+            <h1>{ match.params.id }</h1>
         </Fragment>
     );
 
