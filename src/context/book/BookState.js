@@ -28,21 +28,27 @@ const BookState = props => {
         isLoading();
         const res = await getBooks();
 
+        let books = [];
+        res.rows.map(row => {
+            books.push({id: row.id, ...row.doc})
+        });
+
         dispatch({
             type: GET_BOOKS,
-            payload: res.rows
+            payload: books
         });
 
     }
 
     // Set current book
-    const setBook = async book => {
+    const setBook = async id => {
 
         isLoading();
+        const res = await getBook(id);
 
         dispatch({
             type: SET_BOOK,
-            payload: book
+            payload: res
         });
 
     }
