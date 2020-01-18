@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 const CreateBook = () => (
     <Fragment>
-        <p>Creates a new book !</p>
+        <h1>Create a book !</h1>
     </Fragment>
 );
 
