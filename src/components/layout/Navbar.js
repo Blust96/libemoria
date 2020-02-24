@@ -1,28 +1,50 @@
 import React,  { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
+// Home navbar component
+const HomeBar = () => (
+    <Fragment>
+        <Link to='/'>Accueil</Link>
+        <Link to='/create'>Créer</Link>
+    </Fragment>
+);
+
+// Details navbar component
+const DetailsBar = ({ history, id, title }) => (
+    <Fragment>
+        <button type="button" onClick={() => history.goBack()}>
+            Retour
+        </button>
+        <h1>{title}</h1>
+        <Link to={`/update/${id}`}>Modifier</Link>
+    </Fragment>
+);
+
+// Update navbar component
+const UpdateBar = ({ history, id, title }) => (
+    <Fragment>
+        <button type="button" onClick={() => history.goBack()}>
+            Retour
+        </button>
+        <h1>Modifier {title}</h1>
+    </Fragment>
+);
+
+// Rendering navbar component
 const Navbar = ({ route, props }) => {
 
-    const HomeBar = (
-        <Fragment>
-            <Link to='/'>Accueil</Link>
-            <Link to='/create'>Créer</Link>
-        </Fragment>
-    );
-
-    const DetailsBar = (
-        <Fragment>
-            <Link to='/update'>Modifier</Link>
-        </Fragment>
-    )
+    // Get routes history
+    const history = useHistory();
 
     const renderNav = (route) => {
         switch(route) {
             case 'details': 
-                return DetailsBar;
+                return <DetailsBar history={history} id={props.id} title={props.title} />;
+            case 'update':
+                return <UpdateBar history={history} id={props.id} title={props.title} />
             case 'home':
             default:
-                return HomeBar;
+                return <HomeBar />;
         }
     }
 

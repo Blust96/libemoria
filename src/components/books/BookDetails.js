@@ -1,18 +1,22 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 
 import BookContext from '../../context/book/BookContext';
 
-const BookDetails = ({ match }) => {
+const BookDetails = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
     const { isLoading, book, setBook } = bookContext;
 
+    // Get params
+    const params = useParams();
+
     useEffect(() => {
-        setBook(match.params.id)
+        setBook(params.id)
     }, []);
 
     const {
@@ -26,7 +30,7 @@ const BookDetails = ({ match }) => {
     else {
         return (
             <Fragment>
-                <Navbar route={'details'} />
+                <Navbar route={'details'} props={{ id: params.id, title }}/>
                 <h1>{ title }</h1>
                 <h2>{ author }</h2>
                 <h3>{ genre }</h3>
