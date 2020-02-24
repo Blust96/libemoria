@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 
+import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 
 import BookContext from '../../context/book/BookContext';
@@ -25,6 +26,7 @@ const BookDetails = ({ match }) => {
     else {
         return (
             <Fragment>
+                <Navbar route={'details'} />
                 <h1>{ title }</h1>
                 <h2>{ author }</h2>
                 <h3>{ genre }</h3>

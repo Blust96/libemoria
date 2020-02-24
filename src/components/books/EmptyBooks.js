@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const EmptyBooks = () => (
     <Fragment>
-        <p>You have 0 books yet !</p>
-        <Link to='/create'>Just create one</Link>
+        <p>Vous n'avez pas encore de livre !</p>
+        <Link to='/create'>Se laisser guider</Link>
     </Fragment>
 );
 

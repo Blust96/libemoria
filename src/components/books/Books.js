@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 
+import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 import EmptyBooks from './EmptyBooks';
 import BookCard from './BookCard';
@@ -23,9 +24,12 @@ const Books = () => {
         return <EmptyBooks />
     else {
         return (
-            books.map(book => (
-                <BookCard key={book._id} book={book} />
-            ))
+            <Fragment>
+                <Navbar route={'home'} />
+                { books.map(book => (
+                    <BookCard key={book._id} book={book} />
+                )) }
+            </Fragment>
         )
     }
 
