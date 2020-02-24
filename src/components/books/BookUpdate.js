@@ -18,7 +18,7 @@ const BookUpdate = () => {
 
     // onSubmit function
     const onSubmit = values => {
-        modifyBook(books, values);
+        modifyBook(books, { ...book, ...values });
     }
 
     // Get params

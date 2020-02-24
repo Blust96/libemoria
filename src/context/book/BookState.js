@@ -30,7 +30,7 @@ const BookState = props => {
 
         let books = [];
         res.rows.map(row => {
-            books.push({id: row.id, ...row.doc})
+            books.push(row.doc);
         });
 
         dispatch({
@@ -72,12 +72,19 @@ const BookState = props => {
     // Modify book
     const modifyBook = async (books, props) => {
 
+        console.log(props);
+
         isLoading();
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
         // TODO:
         // Update books array with the modified book
+        books.map(book => {
+            if(modifiedBook._id === book._id) {
+                return modifiedBook;
+            }
+        });
 
         dispatch({
             type: MODIFY_BOOK,
