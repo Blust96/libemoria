@@ -75,7 +75,7 @@ const updateBook = async props => {
         let res = await db.put({
             _id: props._id,
             _rev: book._rev,
-            props
+            ...props
         });
         return res;
     } catch(err) {
