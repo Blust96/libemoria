@@ -9,6 +9,16 @@ const HomeBar = () => (
     </Fragment>
 );
 
+// Create navbar component
+const CreateBar = ({ history }) => (
+    <Fragment>
+        <button type="button" onClick={() => history.goBack()}>
+            Retour
+        </button>
+        <h1>Créer un livre</h1>
+    </Fragment>
+)
+
 // Details navbar component
 const DetailsBar = ({ history, id, title }) => (
     <Fragment>
@@ -38,6 +48,8 @@ const Navbar = ({ route, props }) => {
 
     const renderNav = (route) => {
         switch(route) {
+            case 'create': 
+                return <CreateBar history={history} />;
             case 'details': 
                 return <DetailsBar history={history} id={props.id} title={props.title} />;
             case 'update':

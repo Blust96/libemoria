@@ -1,6 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
+import Navbar from '../layout/Navbar';
+
 import BookContext from '../../context/book/BookContext';
 
 const CreateBook = () => {
@@ -19,7 +21,7 @@ const CreateBook = () => {
 
     return (
         <Fragment>
-            <h1>Créer un livre !</h1>
+            <Navbar route={'create'} />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="title">Titre du livre</label>
                 <input name="title" placeholder="Titre du livre" ref={register({ required: true })} />
