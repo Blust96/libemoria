@@ -4,6 +4,7 @@ import {
     SET_BOOK,
     MODIFY_BOOK,
     REMOVE_BOOK,
+    TOGGLE_FAVORITE,
     IS_LOADING,
 } from '../types';
 
@@ -48,11 +49,19 @@ export default (state, action) => {
                 isLoading: false
             };
 
+        case TOGGLE_FAVORITE:
+            return {
+                ...state,
+                books: action.payload.books,
+                book: action.payload.modifiedBook,
+                isLoading: false
+            };
+
         case IS_LOADING:
             return {
                 ...state,
                 isLoading: true
-            }
+            };
 
         default: 
             return state;

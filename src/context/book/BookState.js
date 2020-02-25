@@ -7,6 +7,7 @@ import {
     SET_BOOK,
     MODIFY_BOOK,
     REMOVE_BOOK,
+    TOGGLE_FAVORITE,
     IS_LOADING,
 } from '../types';
 
@@ -72,14 +73,10 @@ const BookState = props => {
     // Modify book
     const modifyBook = async (books, props) => {
 
-        console.log(props);
-
         isLoading();
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
-        // TODO:
-        // Update books array with the modified book
         books.map(book => {
             if(modifiedBook._id === book._id) {
                 return modifiedBook;
@@ -105,7 +102,29 @@ const BookState = props => {
         dispatch({
             type: REMOVE_BOOK,
             payload: { books }
-        })
+        });
+
+    }
+
+    // Toggle favorite value of a book
+    const toggleFavorite = async (books, book) => {
+
+        book.favorite = !book.favorite;
+
+        isLoading();
+        const res = await updateBook(book);
+        const modifiedBook = await getBook(res.id);
+
+        books.map(book => {
+            if(modifiedBook._id === book._id) {
+                return modifiedBook;
+            }
+        });
+
+        dispatch({
+            type: TOGGLE_FAVORITE,
+            payload: { books, modifiedBook }
+        });
 
     }
 
@@ -122,7 +141,8 @@ const BookState = props => {
                 setBook,
                 addBook,
                 modifyBook,
-                removeBook
+                removeBook,
+                toggleFavorite
             }}
         >
             {props.children}
