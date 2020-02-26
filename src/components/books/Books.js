@@ -21,7 +21,12 @@ const Books = () => {
     if (isLoading) 
         return <LoadingView />
     else if (books.length === 0)
-        return <EmptyBooks />
+        return (
+            <Fragment>
+                <Navbar route={'home'} />
+                <EmptyBooks />
+            </Fragment>
+        )
     else {
         return (
             <Fragment>

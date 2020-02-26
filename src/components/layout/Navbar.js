@@ -26,7 +26,7 @@ const DetailsBar = ({ history, props }) => (
             Retour
         </button>
         <h1>{props.title}</h1>
-        <button type="button" onClick={() => props.toggleFavorite(props.books, props.book)}>
+        <button type="button" onClick={() => props.toggleFavorite(props.book)}>
             {props.book.favorite ? 'favoris' : 'pas favoris'}
         </button>
         <Link to={`/update/${props.id}`}>Modifier</Link>
@@ -34,12 +34,12 @@ const DetailsBar = ({ history, props }) => (
 );
 
 // Update navbar component
-const UpdateBar = ({ history, title }) => (
+const UpdateBar = ({ history, props }) => (
     <Fragment>
         <button type="button" onClick={() => history.goBack()}>
             Retour
         </button>
-        <h1>Modifier {title}</h1>
+        <h1>Modifier {props.title}</h1>
     </Fragment>
 );
 
@@ -56,7 +56,7 @@ const Navbar = ({ route, props }) => {
             case 'details': 
                 return <DetailsBar history={history} props={props} />;
             case 'update':
-                return <UpdateBar history={history} title={props.title} />
+                return <UpdateBar history={history} props={props} />
             case 'home':
             default:
                 return <HomeBar />;

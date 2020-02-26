@@ -9,14 +9,15 @@ const CreateBook = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
-    const { books, addBook } = bookContext;
+    const { book, addBook } = bookContext;
 
     // React hook form declarations
     const { register, handleSubmit, errors } = useForm();
 
     // onSubmit function
     const onSubmit = values => {
-        addBook(books, values);
+        addBook(values);
+        console.log(book._id);
     }
 
     return (

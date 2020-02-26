@@ -22,8 +22,8 @@ export default (state, action) => {
         case ADD_BOOK:
             return {
                 ...state,
-                books: action.payload.books,
-                book: action.payload.addedBook,
+                books: [action.payload, ...state.books],
+                book: action.payload,
                 isLoading: false
             };
 
@@ -37,23 +37,29 @@ export default (state, action) => {
         case MODIFY_BOOK:
             return {
                 ...state,
-                books: action.payload.books,
-                book: action.payload.modifiedBook,
+                books: state.books.map(book =>
+                    book._id === action.payload._id ? action.payload : book
+                ),
+                book: action.payload,
                 isLoading: false
             };
 
         case REMOVE_BOOK:
             return {
                 ...state,
-                books: action.payload.books,
+                books: state.books.filter(
+                    book => book._id !== action.payload
+                ),
                 isLoading: false
             };
 
         case TOGGLE_FAVORITE:
             return {
                 ...state,
-                books: action.payload.books,
-                book: action.payload.modifiedBook,
+                books: state.books.map(book =>
+                    book._id === action.payload._id ? action.payload : book
+                ),
+                book: action.payload,
                 isLoading: false
             };
 

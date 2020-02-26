@@ -11,14 +11,14 @@ const BookUpdate = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
-    const { isLoading, books, book, setBook, modifyBook } = bookContext;
+    const { isLoading, book, setBook, modifyBook } = bookContext;
 
     // React hook form declarations
     const { register, handleSubmit, errors } = useForm();
 
     // onSubmit function
     const onSubmit = values => {
-        modifyBook(books, { ...book, ...values });
+        modifyBook({ ...book, ...values });
     }
 
     // Get params

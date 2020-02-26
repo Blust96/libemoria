@@ -55,59 +55,48 @@ const BookState = props => {
     }
 
     // Add book
-    const addBook = async (books, props) => {
+    const addBook = async book => {
 
         isLoading();
-        const res = await createBook(props);
+        const res = await createBook(book);
         const addedBook = await getBook(res.id);
-
-        books = [...books, addedBook];
 
         dispatch({
             type: ADD_BOOK,
-            payload: { books, addedBook }
+            payload: addedBook
         });
 
     }
 
     // Modify book
-    const modifyBook = async (books, props) => {
+    const modifyBook = async props => {
 
         isLoading();
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
-        books.map(book => {
-            if(modifiedBook._id === book._id) {
-                return modifiedBook;
-            }
-        });
-
         dispatch({
             type: MODIFY_BOOK,
-            payload: { books, modifiedBook }
+            payload: modifiedBook
         });
 
     }
 
     // Remove book
-    const removeBook = async (books, id) => {
+    const removeBook = async id => {
 
         isLoading();
         const res = await deleteBook(id);
 
-        // TODO:
-        // Update books array with the deleted book
-
         dispatch({
             type: REMOVE_BOOK,
-            payload: { books }
+            payload: id
         });
 
     }
 
     // Toggle favorite value of a book
-    const toggleFavorite = async (books, book) => {
+    const toggleFavorite = async book => {
 
         book.favorite = !book.favorite;
 
@@ -115,15 +104,9 @@ const BookState = props => {
         const res = await updateBook(book);
         const modifiedBook = await getBook(res.id);
 
-        books.map(book => {
-            if(modifiedBook._id === book._id) {
-                return modifiedBook;
-            }
-        });
-
         dispatch({
             type: TOGGLE_FAVORITE,
-            payload: { books, modifiedBook }
+            payload: modifiedBook
         });
 
     }

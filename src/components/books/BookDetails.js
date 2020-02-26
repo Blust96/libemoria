@@ -10,7 +10,7 @@ const BookDetails = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
-    const { isLoading, toggleFavorite, books, book, setBook } = bookContext;
+    const { isLoading, toggleFavorite, book, setBook } = bookContext;
 
     // Get params
     const params = useParams();
@@ -30,7 +30,7 @@ const BookDetails = () => {
     else {
         return (
             <Fragment>
-                <Navbar route={'details'} props={{ id: params.id, title, books, book, toggleFavorite }}/>
+                <Navbar route={'details'} props={{ id: params.id, title, book, toggleFavorite }}/>
                 <h1>{ title }</h1>
                 <h2>{ author }</h2>
                 <h3>{ genre }</h3>
