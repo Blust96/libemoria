@@ -1,6 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams, useHistory } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
@@ -16,17 +16,25 @@ const BookUpdate = () => {
     // React hook form declarations
     const { register, handleSubmit, errors } = useForm();
 
-    // onSubmit function
-    const onSubmit = values => {
-        modifyBook({ ...book, ...values });
-    }
+    // Get routes history
+    const history = useHistory();
 
     // Get params
     const params = useParams();
 
+    // Boolean to check if form have been submitted
+    const [submitted, setSubmitted] = useState(false);
+
     useEffect(() => {
-        setBook(params.id)
-    }, []);
+        submitted && history.push(`/details/${params.id}`);
+        setBook(params.id);
+    }, [submitted]);
+
+    // onSubmit function
+    const onSubmit = values => {
+        modifyBook({ ...book, ...values });
+        setSubmitted(true);
+    }
 
     const {
         title,

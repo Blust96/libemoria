@@ -1,5 +1,6 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 
@@ -14,10 +15,21 @@ const CreateBook = () => {
     // React hook form declarations
     const { register, handleSubmit, errors } = useForm();
 
+    // Get routes history
+    const history = useHistory();
+
+    // Boolean to check if form have been submitted
+    const [submitted, setSubmitted] = useState(false);
+
+    // Checking book after creation
+    useEffect(() => {
+        submitted && history.push(`/details/${book._id}`);
+    }, [book]);
+
     // onSubmit function
     const onSubmit = values => {
         addBook(values);
-        console.log(book._id);
+        setSubmitted(true);
     }
 
     return (
