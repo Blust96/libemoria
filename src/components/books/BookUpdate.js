@@ -1,17 +1,22 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams, useHistory } from 'react-router-dom';
+import { Prompt, useParams, useHistory } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 
 import BookContext from '../../context/book/BookContext';
+import AlertContext from '../../context/alert/AlertContext';
 
 const BookUpdate = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
     const { isLoading, book, setBook, modifyBook } = bookContext;
+
+    // Get alerts context
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
 
     // React hook form declarations
     const { register, handleSubmit, errors } = useForm();
@@ -25,6 +30,9 @@ const BookUpdate = () => {
     // Boolean to check if form have been submitted
     const [submitted, setSubmitted] = useState(false);
 
+    // Boolean to check if navigation should be blocked
+    const [isBlocking, setIsBlocking] = useState(false);
+
     useEffect(() => {
         submitted && history.push(`/details/${params.id}`);
         setBook(params.id);
@@ -33,6 +41,7 @@ const BookUpdate = () => {
     // onSubmit function
     const onSubmit = values => {
         modifyBook({ ...book, ...values });
+        setIsBlocking(false);
         setSubmitted(true);
     }
 
@@ -54,7 +63,7 @@ const BookUpdate = () => {
         return (
             <Fragment>
                 <Navbar route={'update'} props={{ id: params.id, title }}/>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}  onChange={event => { setIsBlocking(event.target.value.length > 0) }}>
                     <label htmlFor="title">Titre du livre</label>
                     <input name="title" placeholder="Titre du livre" ref={register({ required: true })} defaultValue={title} />
                     <label htmlFor="author">Auteur du livre</label>
@@ -80,6 +89,10 @@ const BookUpdate = () => {
                     <input type="checkbox" name="wish" ref={register} defaultChecked={wish} />
                     <input type="submit" />
                 </form>
+                <Prompt
+                    when={isBlocking}
+                    message={() => "Voulez-vous abandonner la modification du livre ?"}
+                />
             </Fragment>
         );
     }
