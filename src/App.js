@@ -8,23 +8,26 @@ import BookUpdate from './components/books/BookUpdate';
 import NotFound from './components/pages/NotFound';
 
 import BookState from './context/book/BookState';
+import AlertState from './context/alert/AlertState';
 
 import './App.css';
 
 function App() {
     return (
         <BookState>
-            <Router>
-                <div className="App">
-                    <Switch>
-                        <Route exact path='/' component={Books} />
-                        <Route exact path='/create' component={CreateBook} />
-                        <Route exact path='/details/:id' component={BookDetails} />
-                        <Route exact path='/update/:id' component={BookUpdate} />
-                        <Route component={NotFound} />
-                    </Switch>
-                </div>
-            </Router>
+            <AlertState>
+                <Router>
+                    <div className="App">
+                        <Switch>
+                            <Route exact path='/' component={Books} />
+                            <Route exact path='/create' component={CreateBook} />
+                            <Route exact path='/details/:id' component={BookDetails} />
+                            <Route exact path='/update/:id' component={BookUpdate} />
+                            <Route component={NotFound} />
+                        </Switch>
+                    </div>
+                </Router>
+            </AlertState>
         </BookState>
     );
 }

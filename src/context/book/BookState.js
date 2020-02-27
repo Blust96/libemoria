@@ -114,7 +114,7 @@ const BookState = props => {
     // Set app state to loading
     const isLoading = () => dispatch({ type: IS_LOADING });
 
-    return(
+    return (
         <BookContext.Provider
             value={{
                 books: state.books,
@@ -130,7 +130,7 @@ const BookState = props => {
         >
             {props.children}
         </BookContext.Provider>
-    )
+    );
 
 }
 
