@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Alerts from './components/layout/Alerts';
 import Books from './components/books/Books';
 import CreateBook from './components/books/CreateBook';
 import BookDetails from './components/books/BookDetails';
@@ -25,6 +26,7 @@ function App() {
                             <Route exact path='/update/:id' component={BookUpdate} />
                             <Route component={NotFound} />
                         </Switch>
+                        <Alerts />
                     </div>
                 </Router>
             </AlertState>
