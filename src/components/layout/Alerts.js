@@ -10,6 +10,9 @@ const Alerts = () => {
         alertContext.alerts.map(alert => (
             <div key={alert.id} className={`alert alert-${alert.type}`}>
                 {alert.msg}
+                <button type="button" onClick={() => alertContext.removeAlert(alert.id)}>
+                    Fermer
+                </button>
             </div>
         ))
     );
