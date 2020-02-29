@@ -58,6 +58,7 @@ const BookState = props => {
     const addBook = async book => {
 
         isLoading();
+        book.isbn = book.isbn.trim();
         const res = await createBook(book);
         const addedBook = await getBook(res.id);
 
@@ -72,6 +73,8 @@ const BookState = props => {
     const modifyBook = async props => {
 
         isLoading();
+        if(props.isbn)
+            props.isbn = props.isbn.trim();
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
