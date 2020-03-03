@@ -27,12 +27,7 @@ const BookState = props => {
     const getBooksList = async () => {
 
         isLoading();
-        const res = await getBooks();
-
-        let books = [];
-        res.rows.map(row => {
-            books.push(row.doc);
-        });
+        const books = await getBooks();
 
         dispatch({
             type: GET_BOOKS,
@@ -58,7 +53,10 @@ const BookState = props => {
     const addBook = async book => {
 
         isLoading();
-        book.isbn = book.isbn.trim();
+
+        if(book.isbn) book.isbn = book.isbn.trim();
+        if(book.cover) book.cover = book.cover[0];
+
         const res = await createBook(book);
         const addedBook = await getBook(res.id);
 
@@ -73,8 +71,9 @@ const BookState = props => {
     const modifyBook = async props => {
 
         isLoading();
-        if(props.isbn)
-            props.isbn = props.isbn.trim();
+
+        if(props.isbn) props.isbn = props.isbn.trim();
+
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
 
