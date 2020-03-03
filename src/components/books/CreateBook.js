@@ -71,8 +71,8 @@ const CreateBook = () => {
                 <label htmlFor="description">Description</label>
                 <input name="description" placeholder="Description" ref={register} />
                 {/* Couverture */}
-                <label htmlFor="coverPath">Couverture du livre</label>
-                <input name="coverPath" placeholder="Couverture" ref={register} />
+                <label htmlFor="cover">Couverture du livre</label>
+                <input type="file" accept="image/*" capture name="cover" ref={register} />
                 {/* Favoris */}
                 <label htmlFor="favorite">Favoris</label>
                 <input type="checkbox" name="favorite" ref={register} />

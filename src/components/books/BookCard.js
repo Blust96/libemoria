@@ -1,12 +1,12 @@
 import React,  { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const BookCard = ({ book: { _id, title, author, genre, coverPath, favorite, read, wish } }) => (
+const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, wish } }) => (
     <Fragment>
         <Link to={`/details/${_id}`}>
-            { 
-                coverPath
-                ? (<img src={coverPath} alt={title}></img>)
+            {
+                cover
+                ? <img src={URL.createObjectURL(cover)} alt={title} />
                 : (<div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>)
             }
             <h2>{ title }</h2>
