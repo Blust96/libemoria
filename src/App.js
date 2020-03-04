@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Alerts from './components/layout/Alerts';
 import Books from './components/books/Books';
-import CreateBook from './components/books/CreateBook';
+import BookCreation from './components/books/BookCreation';
 import BookDetails from './components/books/BookDetails';
 import BookUpdate from './components/books/BookUpdate';
 import NotFound from './components/pages/NotFound';
@@ -21,7 +21,7 @@ function App() {
                     <div className="App">
                         <Switch>
                             <Route exact path='/' component={Books} />
-                            <Route exact path='/create' component={CreateBook} />
+                            <Route exact path='/create' component={BookCreation} />
                             <Route exact path='/details/:id' component={BookDetails} />
                             <Route exact path='/update/:id' component={BookUpdate} />
                             <Route component={NotFound} />

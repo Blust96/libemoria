@@ -9,7 +9,7 @@ import Navbar from '../layout/Navbar';
 import BookContext from '../../context/book/BookContext';
 import AlertContext from '../../context/alert/AlertContext';
 
-const CreateBook = () => {
+const BookCreation = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
@@ -92,4 +92,4 @@ const CreateBook = () => {
     );
 };
 
-export default CreateBook;
+export default BookCreation;
