@@ -55,7 +55,15 @@ const BookState = props => {
         isLoading();
 
         if(book.isbn) book.isbn = book.isbn.trim();
-        if(book.cover) book.cover = book.cover[0];
+        if(book.cover.length > 0) {
+            book.cover = book.cover[0];
+            book._attachments = {
+                [book.cover.name]: {
+                    type: book.cover.type,
+                    data: book.cover
+                }
+            }
+        }
 
         const res = await createBook(book);
         const addedBook = await getBook(res.id);
@@ -73,6 +81,15 @@ const BookState = props => {
         isLoading();
 
         if(props.isbn) props.isbn = props.isbn.trim();
+        if(props.cover.length > 0) {
+            props.cover = props.cover[0];
+            props._attachments = {
+                [props.cover.name]: {
+                    type: props.cover.type,
+                    data: props.cover
+                }
+            }
+        }
 
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);

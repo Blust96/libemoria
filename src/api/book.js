@@ -15,7 +15,7 @@ const getBooks = async () => {
 
         let docs = Promise.all(
             res.rows.map(async row => {
-                if(Object.keys(row.doc._attachments).length > 0)
+                if(row.doc._attachments && Object.keys(row.doc._attachments).length > 0)
                     row.doc.cover = await getCover(row.doc._id, Object.keys(row.doc._attachments)[0]);
                 return row.doc;
             })
@@ -55,13 +55,7 @@ const createBook = async props => {
     try {
         let res = await db.put({
             _id: generateId(),
-            _attachments: props.cover ? 
-            {
-                [props.cover.name]: {
-                    type: props.cover.type,
-                    data: props.cover
-                }
-            } : {},
+            _attachments: props._attachments,
             title: props.title,
             author: props.author,
             genre: props.genre,
@@ -90,7 +84,15 @@ const updateBook = async props => {
         let res = await db.put({
             _id: props._id,
             _rev: book._rev,
-            ...props
+            _attachments: props._attachments,
+            title: props.title,
+            author: props.author,
+            genre: props.genre,
+            isbn: props.isbn,
+            description: props.description,
+            favorite: props.favorite,
+            read: props.read,
+            wish: props.wish
         });
         return res;
     } catch(err) {
