@@ -40,7 +40,15 @@ const BookState = props => {
     const setBook = async id => {
 
         isLoading();
-        const res = await getBook(id);
+        
+        let filteredBooks = state.books.filter(book => book._id = id);
+        let res;
+
+        if(filteredBooks.length > 0) {
+            res = state.books.filter(book => book._id = id)[0]
+        } else {
+            res = await getBook(id);
+        }
 
         dispatch({
             type: SET_BOOK,

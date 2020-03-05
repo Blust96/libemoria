@@ -37,7 +37,10 @@ const getBooks = async () => {
 const getBook = async id => {
 
     try {
-        const book = await db.get(id, {attachments: true});
+        let book = await db.get(id, {attachments: true});
+        if(book._attachments && Object.keys(book._attachments).length > 0)
+            book.cover = await getCover(book._id, Object.keys(book._attachments)[0]);
+        console.log(book);
         return book;
     } catch(err) {
         console.log(err);
