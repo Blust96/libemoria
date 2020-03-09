@@ -40,15 +40,7 @@ const BookState = props => {
     const setBook = async id => {
 
         isLoading();
-        
-        let filteredBooks = state.books.filter(book => book._id = id);
-        let res;
-
-        if(filteredBooks.length > 0) {
-            res = state.books.filter(book => book._id = id)[0]
-        } else {
-            res = await getBook(id);
-        }
+        const res = await getBook(id);
 
         dispatch({
             type: SET_BOOK,
@@ -67,7 +59,7 @@ const BookState = props => {
             book.cover = book.cover[0];
             book._attachments = {
                 [book.cover.name]: {
-                    type: book.cover.type,
+                    content_type: book.cover.type,
                     data: book.cover
                 }
             }
@@ -93,7 +85,7 @@ const BookState = props => {
             props.cover = props.cover[0];
             props._attachments = {
                 [props.cover.name]: {
-                    type: props.cover.type,
+                    content_type: props.cover.type,
                     data: props.cover
                 }
             }
