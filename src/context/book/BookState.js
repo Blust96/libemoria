@@ -27,108 +27,144 @@ const BookState = props => {
     // Get all books
     const getBooksList = async () => {
 
-        isLoading();
-        const books = await getBooks();
+        try {
 
-        dispatch({
-            type: GET_BOOKS,
-            payload: books
-        });
+            isLoading();
+            const books = await getBooks();
+
+            dispatch({
+                type: GET_BOOKS,
+                payload: books
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
 
     }
 
     // Set current book
     const setBook = async id => {
 
-        isLoading();
-        const res = await getBook(id);
+        try {
 
-        dispatch({
-            type: SET_BOOK,
-            payload: res
-        });
+            isLoading();
+            const res = await getBook(id);
+
+            dispatch({
+                type: SET_BOOK,
+                payload: res
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
 
     }
 
     // Add book
     const addBook = async book => {
 
-        isLoading();
+        try {
 
-        if(book.isbn) book.isbn = book.isbn.trim();
-        if(book.cover.length > 0) {
-            book.cover = book.cover[0];
-            book._attachments = {
-                [book.cover.name]: {
-                    content_type: book.cover.type,
-                    data: book.cover
+            isLoading();
+
+            if(book.isbn) book.isbn = book.isbn.trim();
+            if(book.cover.length > 0) {
+                book.cover = book.cover[0];
+                book._attachments = {
+                    [book.cover.name]: {
+                        content_type: book.cover.type,
+                        data: book.cover
+                    }
                 }
             }
+
+            const res = await createBook(book);
+            const addedBook = await getBook(res.id);
+
+            dispatch({
+                type: ADD_BOOK,
+                payload: addedBook
+            });
+
+        } catch(err) {
+            console.log(err);
         }
-
-        const res = await createBook(book);
-        const addedBook = await getBook(res.id);
-
-        dispatch({
-            type: ADD_BOOK,
-            payload: addedBook
-        });
 
     }
 
     // Modify book
     const modifyBook = async props => {
 
-        isLoading();
+        try {
 
-        if(props.isbn) props.isbn = props.isbn.trim();
-        if(props.cover.length > 0) {
-            props.cover = props.cover[0];
-            props._attachments = {
-                [props.cover.name]: {
-                    content_type: props.cover.type,
-                    data: props.cover
+            isLoading();
+
+            if(props.isbn) props.isbn = props.isbn.trim();
+            if(props.cover.length > 0) {
+                props.cover = props.cover[0];
+                props._attachments = {
+                    [props.cover.name]: {
+                        content_type: props.cover.type,
+                        data: props.cover
+                    }
                 }
-            }
-        } else if(!state.book.cover)
-            props._attachments = null;
+            } else if(!state.book.cover)
+                props._attachments = null;
 
-        const res = await updateBook(props);
-        const modifiedBook = await getBook(res.id);
+            const res = await updateBook(props);
+            const modifiedBook = await getBook(res.id);
 
-        dispatch({
-            type: MODIFY_BOOK,
-            payload: modifiedBook
-        });
+            dispatch({
+                type: MODIFY_BOOK,
+                payload: modifiedBook
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
 
     }
 
     // Remove book
     const removeBook = async id => {
 
-        isLoading();
-        const res = await deleteBook(id);
+        try {
 
-        dispatch({
-            type: REMOVE_BOOK,
-            payload: id
-        });
+            isLoading();
+            const res = await deleteBook(id);
+
+            dispatch({
+                type: REMOVE_BOOK,
+                payload: id
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
 
     }
 
     // Toggle favorite value of a book
     const toggleFavorite = async book => {
 
-        book.favorite = !book.favorite;
+        try {
 
-        isLoading();
-        const res = await updateBook(book);
-        const modifiedBook = await getBook(res.id);
+            book.favorite = !book.favorite;
 
-        dispatch({
-            type: TOGGLE_FAVORITE,
-            payload: modifiedBook
-        });
+            isLoading();
+            const res = await updateBook(book);
+            const modifiedBook = await getBook(res.id);
+
+            dispatch({
+                type: TOGGLE_FAVORITE,
+                payload: modifiedBook
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
 
     }
 
