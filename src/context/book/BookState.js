@@ -8,6 +8,7 @@ import {
     MODIFY_BOOK,
     REMOVE_BOOK,
     TOGGLE_FAVORITE,
+    RESET_COVER,
     IS_LOADING,
 } from '../types';
 
@@ -89,7 +90,8 @@ const BookState = props => {
                     data: props.cover
                 }
             }
-        }
+        } else if(!state.book.cover)
+            props._attachments = null;
 
         const res = await updateBook(props);
         const modifiedBook = await getBook(res.id);
@@ -130,6 +132,12 @@ const BookState = props => {
 
     }
 
+    // Reset cover
+    const resetCover = () => {
+        isLoading();
+        dispatch({ type: RESET_COVER });
+    }
+
     // Set app state to loading
     const isLoading = () => dispatch({ type: IS_LOADING });
 
@@ -144,7 +152,8 @@ const BookState = props => {
                 addBook,
                 modifyBook,
                 removeBook,
-                toggleFavorite
+                toggleFavorite,
+                resetCover
             }}
         >
             {props.children}

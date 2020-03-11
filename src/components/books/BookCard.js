@@ -7,7 +7,7 @@ const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, wi
             {
                 cover
                 ? <img src={URL.createObjectURL(cover)} alt={title} />
-                : (<div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>)
+                : <div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>
             }
             <h2>{ title }</h2>
             <p className='bookGenre'>{ genre }</p>

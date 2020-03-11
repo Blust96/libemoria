@@ -14,7 +14,7 @@ const BookUpdate = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
-    const { isLoading, book, setBook, modifyBook } = bookContext;
+    const { isLoading, book, setBook, modifyBook, resetCover } = bookContext;
 
     // Get alerts context
     const alertContext = useContext(AlertContext);
@@ -102,10 +102,11 @@ const BookUpdate = () => {
                     {/* Couverture */}
                     <div>
                         <label htmlFor="cover">Couverture du livre</label>
+                        <button type="button" onClick={resetCover}>Supprimer</button>
                         {
                             cover
                             ? <img src={URL.createObjectURL(cover)} alt={title} />
-                            : (<div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>)
+                            : <div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>
                         }
                         <input type="file" accept="image/*" capture name="cover" ref={register} />
                     </div>

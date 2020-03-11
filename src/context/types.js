@@ -5,6 +5,7 @@ export const SET_BOOK = 'SET_BOOK';
 export const MODIFY_BOOK = 'MODIFY_BOOK';
 export const REMOVE_BOOK = 'REMOVE_BOOK';
 export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
+export const RESET_COVER = 'RESET_COVER';
 // Alerts
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';

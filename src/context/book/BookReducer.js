@@ -5,6 +5,7 @@ import {
     MODIFY_BOOK,
     REMOVE_BOOK,
     TOGGLE_FAVORITE,
+    RESET_COVER,
     IS_LOADING,
 } from '../types';
 
@@ -62,6 +63,13 @@ export default (state, action) => {
                 book: action.payload,
                 isLoading: false
             };
+
+        case RESET_COVER:
+            return {
+                ...state,
+                book: {...state.book, cover: null},
+                isLoading: false
+            }
 
         case IS_LOADING:
             return {
