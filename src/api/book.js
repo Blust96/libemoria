@@ -38,7 +38,6 @@ const getBook = async id => {
 
     try {
         let book = await db.get(id, {attachments: true});
-        console.log(book._attachments);
         if(book._attachments && Object.keys(book._attachments).length > 0)
             book.cover = await getCover(book._id, Object.keys(book._attachments)[0]);
         return book;

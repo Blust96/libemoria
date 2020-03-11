@@ -48,31 +48,43 @@ const BookCreation = () => {
             <Navbar route={'create'} />
             <form onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }}>
                 {/* Titre */}
-                <label htmlFor="title">Titre du livre</label>
-                {errors.title && "Requis"}
-                <input name="title" placeholder="Titre du livre" ref={register({ required: true })} />
+                <div>
+                    <label htmlFor="title">Titre du livre</label>
+                    <input name="title" placeholder="Titre du livre" ref={register({ required: true })} />
+                    {errors.title && "Requis"}
+                </div>
                 {/* Auteur */}
-                <label htmlFor="author">Auteur du livre</label>
-                {errors.author && "Requis"}
-                <input name="author" placeholder="Auteur du livre" ref={register({ required: true })} />
+                <div>
+                    <label htmlFor="author">Auteur du livre</label>
+                    <input name="author" placeholder="Auteur du livre" ref={register({ required: true })} />
+                    {errors.author && "Requis"}
+                </div>
                 {/* Genre */}
-                <label htmlFor="genre">Genre</label>
-                <select name="genre" placeholder="Genre" ref={register}>
-                    <option value="science_fiction">Science-fiction</option>
-                    <option value="policier">Policier</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="manga">Manga</option>
-                </select>
+                <div>
+                    <label htmlFor="genre">Genre</label>
+                    <select name="genre" placeholder="Genre" ref={register}>
+                        <option value="science_fiction">Science-fiction</option>
+                        <option value="policier">Policier</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="manga">Manga</option>
+                    </select>
+                </div>
                 {/* ISBN */}
-                <label htmlFor="isbn">ISBN</label>
-                <input name="isbn" placeholder="ISBN" ref={register({ validate: value => isISBN(value) })} />
-                {errors.isbn && "Veuillez renseigner un ISBN correct"}
+                <div>
+                    <label htmlFor="isbn">ISBN</label>
+                    <input name="isbn" placeholder="ISBN" ref={register({ validate: value => isISBN(value) })} />
+                    {errors.isbn && "ISBN incorrect"}
+                </div>
                 {/* Description */}
-                <label htmlFor="description">Description</label>
-                <input name="description" placeholder="Description" ref={register} />
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <input name="description" placeholder="Description" ref={register} />
+                </div>
                 {/* Couverture */}
-                <label htmlFor="cover">Couverture du livre</label>
-                <input type="file" accept="image/*" capture name="cover" ref={register} />
+                <div>
+                    <label htmlFor="cover">Couverture du livre</label>
+                    <input type="file" accept="image/*" capture name="cover" ref={register} />
+                </div>
                 {/* Favoris */}
                 <label htmlFor="favorite">Favoris</label>
                 <input type="checkbox" name="favorite" ref={register} />
