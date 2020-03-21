@@ -15,7 +15,7 @@ const Books = () => {
 
     useEffect(() => {
         getBooksList()
-    });
+    }, []);
 
     // Render
     if (isLoading) 
