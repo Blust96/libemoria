@@ -1,27 +1,27 @@
-import React,  { Fragment } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 // Home navbar component
 const HomeBar = () => (
-    <Fragment>
+    <section>
         <Link to='/'>Accueil</Link>
         <Link to='/create'>Créer</Link>
-    </Fragment>
+    </section>
 );
 
 // Create navbar component
 const CreateBar = ({ history }) => (
-    <Fragment>
+    <section>
         <button type="button" onClick={() => history.goBack()}>
             Retour
         </button>
         <h1>Créer un livre</h1>
-    </Fragment>
+    </section>
 );
 
 // Details navbar component
 const DetailsBar = ({ history, props }) => (
-    <Fragment>
+    <section>
         <button type="button" onClick={() => history.goBack()}>
             Retour
         </button>
@@ -30,17 +30,17 @@ const DetailsBar = ({ history, props }) => (
             {props.book.favorite ? 'favoris' : 'pas favoris'}
         </button>
         <Link to={`/update/${props.id}`}>Modifier</Link>
-    </Fragment>
+    </section>
 );
 
 // Update navbar component
 const UpdateBar = ({ history, props }) => (
-    <Fragment>
+    <section>
         <button type="button" onClick={() => history.goBack()}>
             Retour
         </button>
         <h1>Modifier {props.title}</h1>
-    </Fragment>
+    </section>
 );
 
 // Rendering navbar component
@@ -64,9 +64,11 @@ const Navbar = ({ route, props }) => {
     }
 
     return (
-        <nav>
-        { renderNav(route) }
-        </nav>
+        <header>
+            <nav>
+                { renderNav(route) }
+            </nav>
+        </header>
     );
 
 }

@@ -15,7 +15,7 @@ const Books = () => {
 
     useEffect(() => {
         getBooksList()
-    }, []);
+    });
 
     // Render
     if (isLoading) 
@@ -31,9 +31,11 @@ const Books = () => {
         return (
             <Fragment>
                 <Navbar route={'home'} />
-                { books.map(book => (
-                    <BookCard key={book._id} book={book} />
-                )) }
+                <section>
+                    { books.map(book => (
+                        <BookCard key={book._id} book={book} />
+                    )) }
+                </section>
             </Fragment>
         )
     }

@@ -22,7 +22,13 @@ const BookDetails = () => {
     const {
         title,
         author,
-        genre
+        genre,
+        isbn,
+        description,
+        cover,
+        favorite,
+        read,
+        wish
     } = book;
 
     if (isLoading) 
@@ -31,9 +37,24 @@ const BookDetails = () => {
         return (
             <Fragment>
                 <Navbar route={'details'} props={{ id: params.id, title, book, toggleFavorite }}/>
-                <h1>{ title }</h1>
-                <h2>{ author }</h2>
-                <h3>{ genre }</h3>
+                <div>
+                    <p><span className='book-genre'>{ genre }</span></p>
+                    {
+                        cover
+                        ? <img className='book-cover' src={URL.createObjectURL(cover)} alt={title} />
+                        : <img className='book-cover' src='/cover_placeholder.png' alt='Cover placeholder' />
+                    }
+                    <div className='book-badges'>
+                        { favorite ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                        { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                        { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                    </div>
+                </div>
+                <div>
+                    <p><span className='book-author'>{ author }</span></p>
+                    <p><span className='book-isbn'>{ isbn }</span></p>
+                </div>
+                <p><span className='book-description'>{ description }</span></p>
             </Fragment>
         );
     }
