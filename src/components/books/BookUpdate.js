@@ -35,17 +35,10 @@ const BookUpdate = () => {
     // Boolean to check if navigation should be blocked
     const [isBlocking, setIsBlocking] = useState(false);
 
-    useEffect(() => {
-        submitted && history.push(`/details/${params.id}`);
-        setBook(params.id);
-    }, [submitted]);
-
-    // onSubmit function
-    const onSubmit = values => {
-        modifyBook({ ...book, ...values });
-        setIsBlocking(false);
-        setSubmitted(true);
-    }
+    // Set preview cover
+    const [bookCover, setBookCover] = useState(null);
+    // Input file event
+    const [fileEvent, setFileEvent] = useState(null);
 
     const {
         title,
@@ -58,6 +51,35 @@ const BookUpdate = () => {
         read,
         wish
     } = book;
+
+    useEffect(() => {
+        submitted && history.push(`/details/${params.id}`);
+        setBook(params.id);
+        setBookCover(book.cover);
+    }, [submitted]);
+
+    // onSubmit function
+    const onSubmit = values => {
+        modifyBook({ ...book, ...values });
+        setIsBlocking(false);
+        setSubmitted(true);
+    }
+
+    // onCoverChange function
+    const onCoverChange = event => {
+        event.persist();
+        setBookCover(event.target.files[0]);
+        setFileEvent(event);
+    }
+
+    // Reset current cover input value
+    const resetBookCover = () => {
+        resetCover();
+        if(fileEvent) {
+            fileEvent.target.value = '';
+            setBookCover(null);
+        }
+    }
 
     if (isLoading) 
         return <LoadingView />
@@ -102,13 +124,15 @@ const BookUpdate = () => {
                     {/* Couverture */}
                     <div>
                         <label htmlFor="cover">Couverture du livre</label>
-                        <button type="button" onClick={resetCover}>Supprimer</button>
+                        <button type="button" onClick={resetBookCover}>Supprimer</button>
                         {
-                            cover
-                            ? <img src={URL.createObjectURL(cover)} alt={title} />
-                            : <div style={{ width: '80px', height: '140px', backgroundColor: '#000' }}></div>
+                            bookCover
+                            ? <img className='book-cover' src={URL.createObjectURL(bookCover)} alt={title} />
+                            : cover
+                            ? <img className='book-cover' src={URL.createObjectURL(cover)} alt={title} />
+                            : <img className='book-cover' src='/cover_placeholder.png' alt='Cover placeholder' />
                         }
-                        <input type="file" accept="image/*" capture name="cover" ref={register} />
+                        <input type="file" accept="image/*" capture name="cover" ref={register} onChange={event => onCoverChange(event)} />
                     </div>
                     {/* Favoris */}
                     <label htmlFor="favorite">Favoris</label>

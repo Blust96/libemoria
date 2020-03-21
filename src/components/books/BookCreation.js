@@ -31,6 +31,11 @@ const BookCreation = () => {
     // Boolean to check if navigation should be blocked
     const [isBlocking, setIsBlocking] = useState(false);
 
+    // Set preview cover
+    const [bookCover, setBookCover] = useState(null);
+    // Input file event
+    const [fileEvent, setFileEvent] = useState(null);
+
     // Checking book after creation
     useEffect(() => {
         submitted && history.push(`/details/${book._id}`);
@@ -41,6 +46,21 @@ const BookCreation = () => {
         addBook(values);
         setIsBlocking(false);
         setSubmitted(true);
+    }
+
+    // onCoverChange function
+    const onCoverChange = event => {
+        event.persist();
+        setBookCover(event.target.files[0]);
+        setFileEvent(event);
+    }
+
+    // Reset current cover input value
+    const resetBookCover = () => {
+        if(fileEvent) {
+            fileEvent.target.value = '';
+            setBookCover(null);
+        }
     }
 
     return (
@@ -83,7 +103,13 @@ const BookCreation = () => {
                 {/* Couverture */}
                 <div>
                     <label htmlFor="cover">Couverture du livre</label>
-                    <input type="file" accept="image/*" capture name="cover" ref={register} />
+                    <button type="button" onClick={resetBookCover}>Supprimer</button>
+                    {
+                        bookCover
+                        ? <img className='book-cover' src={URL.createObjectURL(bookCover)} alt='Cover' />
+                        : <img className='book-cover' src='/cover_placeholder.png' alt='Cover placeholder' />
+                    }
+                    <input type="file" accept="image/*" capture name="cover" ref={register} onChange={event => onCoverChange(event)} />
                 </div>
                 {/* Favoris */}
                 <label htmlFor="favorite">Favoris</label>
