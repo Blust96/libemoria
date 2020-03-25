@@ -10,21 +10,17 @@ const HomeBar = () => (
 );
 
 // Create navbar component
-const CreateBar = ({ history }) => (
+const CreateBar = () => (
     <section>
-        <button type="button" onClick={() => history.goBack()}>
-            Retour
-        </button>
+        <Link to='/'>Retour</Link>
         <h1>Créer un livre</h1>
     </section>
 );
 
 // Details navbar component
-const DetailsBar = ({ history, props }) => (
+const DetailsBar = ({ props }) => (
     <section>
-        <button type="button" onClick={() => history.goBack()}>
-            Retour
-        </button>
+        <Link to='/'>Retour</Link>
         <h1>{props.title}</h1>
         <button type="button" onClick={() => props.toggleFavorite(props.book)}>
             {props.book.favorite ? 'favoris' : 'pas favoris'}
@@ -52,9 +48,9 @@ const Navbar = ({ route, props }) => {
     const renderNav = (route) => {
         switch(route) {
             case 'create': 
-                return <CreateBar history={history} />;
+                return <CreateBar />;
             case 'details': 
-                return <DetailsBar history={history} props={props} />;
+                return <DetailsBar props={props} />;
             case 'update':
                 return <UpdateBar history={history} props={props} />
             case 'home':
