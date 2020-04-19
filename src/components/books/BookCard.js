@@ -10,13 +10,15 @@ const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, wi
                 : <img className='book-cover' src='/cover_placeholder.png' alt='Cover placeholder' />
             }
             <div>
-                <h2>{ title }</h2>
-                <p><span className='book-genre'>{ genre }</span></p>
+                <h2 className="book-title">{ title }</h2>
                 <p><span className='book-author'>{ author }</span></p>
-                <div className='book-badges'>
-                    { favorite ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                    { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                    { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                <div>
+                    <div className='book-badges'>
+                        { favorite ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                        { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                        { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                    </div>
+                    <div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>
                 </div>
             </div>
         </Link>

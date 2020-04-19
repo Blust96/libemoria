@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
@@ -35,27 +35,35 @@ const BookDetails = () => {
         return <LoadingView />
     else {
         return (
-            <Fragment>
-                <Navbar route={'details'} props={{ id: params.id, title, book, toggleFavorite }}/>
-                <div>
-                    <p><span className='book-genre'>{ genre }</span></p>
-                    {
-                        cover
-                        ? <img className='book-cover' src={URL.createObjectURL(cover)} alt={title} />
-                        : <img className='book-cover' src='/cover_placeholder.png' alt='Cover placeholder' />
-                    }
-                    <div className='book-badges'>
-                        { favorite ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                        { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                        { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+            <div id="background" style={ 
+                cover 
+                ? { backgroundImage: `linear-gradient(rgba(167, 62, 208, 0.2), white), url(${URL.createObjectURL(cover)})` } 
+                : { backgroundColor: '#edc0ff' } }>
+                <Navbar route={'details'} props={{ id: params.id, book, toggleFavorite }}/>
+                <section className="content-section">
+                    <div className="container">
+                        <div className="book-header">
+                            <div>
+                                <h2 className="book-title">{ title }</h2>
+                                <p className='book-author'>{ author }</p>
+                            </div>
+                            <div>
+                                <div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>
+                                <p className='book-genre'>{ genre }</p>
+                            </div>
+                        </div>
+                        <div className="book-infos">
+                            <div className='book-badges'>
+                                { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                                { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                            </div>
+                            <p className='book-isbn'>{ isbn ? `ISBN : ${isbn}` : '' }</p>
+                        </div>
+                        <h3>Description</h3>
+                        <p className='book-description'>{ description }</p>
                     </div>
-                </div>
-                <div>
-                    <p><span className='book-author'>{ author }</span></p>
-                    <p><span className='book-isbn'>{ isbn }</span></p>
-                </div>
-                <p><span className='book-description'>{ description }</span></p>
-            </Fragment>
+                </section>
+            </div>
         );
     }
 

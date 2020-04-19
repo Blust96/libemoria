@@ -1,42 +1,49 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import { Favorite, Back, Update } from '../svg';
+
 // Home navbar component
 const HomeBar = () => (
-    <section>
-        <Link to='/'>Accueil</Link>
-        <Link to='/create'>Créer</Link>
-    </section>
+    <div className="container nav-container">
+        <h1>Home</h1>
+    </div>
 );
 
 // Create navbar component
 const CreateBar = () => (
-    <section>
-        <Link to='/'>Retour</Link>
+    <div className="container nav-container">
+        <Link className="button" to='/'>
+            <Back />
+        </Link>
         <h1>Créer un livre</h1>
-    </section>
+    </div>
 );
 
 // Details navbar component
 const DetailsBar = ({ props }) => (
-    <section>
-        <Link to='/'>Retour</Link>
-        <h1>{props.title}</h1>
-        <button type="button" onClick={() => props.toggleFavorite(props.book)}>
-            {props.book.favorite ? 'favoris' : 'pas favoris'}
-        </button>
-        <Link to={`/update/${props.id}`}>Modifier</Link>
-    </section>
+    <div className="container nav-container">
+        <Link className="button" to='/'>
+            <Back />
+        </Link>
+        <div>
+            <button type="button" onClick={() => props.toggleFavorite(props.book)}>
+                <Favorite favorite={props.book.favorite} />
+            </button>
+            <Link className="button" to={`/update/${props.id}`}>
+                <Update />
+            </Link>
+        </div>
+    </div>
 );
 
 // Update navbar component
-const UpdateBar = ({ history, props }) => (
-    <section>
+const UpdateBar = ({ history }) => (
+    <div className="container nav-container">
         <button type="button" onClick={() => history.goBack()}>
-            Retour
+            <Back />
         </button>
-        <h1>Modifier {props.title}</h1>
-    </section>
+    </div>
 );
 
 // Rendering navbar component

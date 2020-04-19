@@ -1,3 +1,12 @@
+/**
+ * Styles guide
+ *
+ * 1. General styles
+ * 2. Book styles
+ * 3. Form styles
+ *
+ */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,59 +14,388 @@
 }
 
 :root {
-    --primary-color: #914eff;
-    --secondary-color: #bf98ff;
-    --dark-color: #989898;
-    --light-color: #f4f4f4;
+	--primary-color: #bb6bd9;
+	--light-primary-color: #f7ecfa;
+    --secondary-color: #edc0ff;
+    --dark-color: #333333;
+	--light-dark-color: #4f4f4f;
+	--gray-color: #828282;
+	--light-gray-color: #fdfdfd;
+	--error-color:  #ff5252;
+	--border-radius: 8px;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
 body {
+	-ms-overflow-style: none;
+} 
+
+/* 1. General styles */
+
+body {
+	font-size: 1rem;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 a {
+	display: block;
     text-decoration: none;
 }
 
+button, .button {
+	border: none;
+	text-decoration: none;
+	/* Hiding defaut settings */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
 header {
+	z-index: 999;
     position: sticky;
     top: 0px;
 }
 
-nav section {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 70px;
 }
+
+.nav-container button, .nav-container a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+	height: 35px;
+	background-color: white;
+	border-radius: 50%;
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+}
+
+.nav-container>div {
+	display: flex;
+	width: 80px;
+	justify-content: space-between;
+}
+
+img {
+	width: 100%;
+}
+
+#root {
+	height: 100vh;
+}
+
+#background {
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top center;
+}
+
+.container {
+	max-width: 92%;
+	margin: 0 auto;
+}
+
+.content-section {
+	background: white;
+	border-radius: 50px 50px 0 0;
+	min-height: calc(100% - 70px);
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+}
+
+h3 {
+	position: relative;
+	margin-top: 1.5rem;
+	font-size: 1.3rem;
+	color: var(--dark-color);
+}
+
+h3::before {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 4px;
+	margin: 0.3rem 0;
+	margin-right: 1rem;
+	background-color: var(--primary-color);
+}
+
+#create-button {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	fill: white;
+	font-size: 42px;
+	font-weight: bold;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color: var(--primary-color);
+}
+
+/* 2. Book styles */
 
 .book-cover {
-    height: 175px;
-    width: 140px;
-    border-radius: 20px;
+    min-height: 120px;
+	min-width: 90px;
+	max-height: 120px;
+    max-width: 90px;
+	border-radius: var(--border-radius);
+	object-fit: cover;
 }
 
-.book-genre {
-    color: var(--secondary-color);
+.book-infos, .book-badges, .book-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.book-header {
+	padding-top: 20px;
+}
+
+.book-header div:last-child {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.book-title {
+	font-size: 1.3rem;
+	color: var(--dark-color);
 }
 
 .book-author {
-    color: var(--dark-color);
+	font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.book-genre {
+	font-size: 0.9rem;
+	font-style: italic;
+    color: var(--gray-color);
+}
+
+.book-infos {
+	margin-top: 20px;
+	padding: 5px 10px;
+	border: 1px solid var(--light-primary-color);
+	border-radius: var(--border-radius);
+	background-color: var(--light-gray-color);
+}
+
+.book-badges div {
+	margin-right: 5px;
+}
+
+.book-isbn {
+	font-size: 0.8rem;
+	line-height: 25px;
+	color: var(--gray-color);
+}
+
+.book-description {
+	margin-top: 15px;
+	font-size: 0.8rem;
+	color: var(--gray-color);
+	line-height: 1.5rem;
+	text-align: justify;
+}
+
+.book-card {
+	margin-top: 1.5rem;
+	border-radius: var(--border-radius);
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 }
 
 .book-card a {
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding: 1.5rem;
+    padding: 0.5rem;
 }
 
-.book-card a div {
-    margin-left: 1rem;
+.book-card a img~div {
+	margin-left: 1rem;
+	width: 100%;
 }
 
-.book-card h2 {
-    color: var(--primary-color);  
+.book-card a img~div>div {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1.5rem;
+}
+
+/* 3. Form styles */
+
+form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+form input[type=submit] {
+	max-width: 200px;
+	width: 80%;
+	margin: 1rem auto;
+	padding: 1rem;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+}
+
+.book-input {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-top: 1.5rem;
+}
+
+.book-input label {
+	color: var(--secondary-color);
+}
+
+.book-input input, .book-input textarea, .book-input select {
+	font-size: 0.8em;
+} 
+ 
+.book-input textarea {
+	height: 90px;
+	max-height: 90px;
+    resize: none;
+}
+
+.book-input select::-ms-expand {
+	display: none;
+}
+
+.book-input input, .book-input textarea, .book-input select, .book-input label {
+	transition: 0.2s all ease-in-out;
+}
+
+.book-input input, .book-input textarea, .book-input select {
+    margin-top: 0.5rem;
+	padding: 10px;
+	border: none;
+	border-radius: 0;
+	border-bottom: 2px solid var(--secondary-color); 
+	background-color: var(--light-gray-color);
+	color: var(--light-dark-color);
+	font-weight: bold;
+	/* Hiding defaut settings */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+.book-input input::placeholder, .book-input textarea::placeholder {
+	color: var(--gray-color);
+	opacity: 0.5;
+}
+
+.book-input input:focus, .book-input textarea:focus, .book-input select:focus {
+	outline: none;
+	border-color: var(--primary-color);
+}
+
+.book-input input:focus + label, .book-input textarea:focus + label, .book-input-genre select:focus + label {
+	color: var(--primary-color);
+}
+
+.book-input-cover {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 230px;
+	margin: 0 auto;
+	margin-top: -30px;
+}
+
+/* Hiding input file */
+.book-input-cover input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.book-input-cover .cover-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	width: 50px;
+	height: 50px;
+	border-radius: var(--border-radius);
+}
+
+.update-cover-button {
+	fill: white;
+	background-color: var(--primary-color);
+}
+
+.delete-cover-button {
+	background-color: var(--light-gray-color);
+	fill: var(--primary-color);
+	border: 1px solid var(--secondary-color);
+}
+
+.book-input-genre {
+	position: relative;
+}
+
+.book-input-genre::after {
+	content: '▾';
+	position: absolute;
+	font-size: 2rem;
+  	top: 25px;
+  	right: 20px;
+  	color: var(--secondary-color);
+  	pointer-events: none;
+}
+
+.book-state {
+	width: 80%;
+	margin: 1.5rem auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.book-state div {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.book-input-error input, .book-input-error label, .book-input-error input:focus, .book-input-error input:focus + label {
+	outline: none;
+	color: var(--error-color);
+	border-color: var(--error-color);
 }
