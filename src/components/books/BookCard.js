@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { Favorite, Bought, Read } from '../svg';
+
 const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, wish } }) => (
     <article className='book-card'>
         <Link to={`/details/${_id}`}>
@@ -14,9 +16,9 @@ const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, wi
                 <p><span className='book-author'>{ author }</span></p>
                 <div>
                     <div className='book-badges'>
-                        { favorite ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                        { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                        { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                        { favorite ? <Favorite favorite={favorite} /> : '' }
+                        { read ? <Read /> : '' }
+                        { wish ? <Bought /> : '' }
                     </div>
                     <div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>
                 </div>

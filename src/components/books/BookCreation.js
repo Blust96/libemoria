@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Prompt, useHistory } from 'react-router-dom';
 
@@ -64,7 +64,7 @@ const BookCreation = () => {
     }
 
     return (
-        <Fragment>
+        <div id="background" style={{ backgroundColor: '#edc0ff' }}>
             <Navbar route={'create'} />
             <section className="content-section">
                 <div className="container">
@@ -152,7 +152,7 @@ const BookCreation = () => {
                 when={isBlocking}
                 message={() => "Voulez-vous abandonner la saisie du livre ?"}
             />
-        </Fragment>
+        </div>
     );
 };
 

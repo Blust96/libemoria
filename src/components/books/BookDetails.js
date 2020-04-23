@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
+import { Bought, Read } from '../svg';
 
 import BookContext from '../../context/book/BookContext';
 
@@ -54,8 +55,8 @@ const BookDetails = () => {
                         </div>
                         <div className="book-infos">
                             <div className='book-badges'>
-                                { read ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
-                                { wish ? (<div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>) : '' }
+                                <Read read={read} />
+                                <Bought wish={wish} />
                             </div>
                             <p className='book-isbn'>{ isbn ? `ISBN : ${isbn}` : '' }</p>
                         </div>

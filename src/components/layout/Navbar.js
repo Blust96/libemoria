@@ -16,7 +16,6 @@ const CreateBar = () => (
         <Link className="button" to='/'>
             <Back />
         </Link>
-        <h1>Créer un livre</h1>
     </div>
 );
 
