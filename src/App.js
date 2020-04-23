@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Alerts from './components/layout/Alerts';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Books from './components/books/Books';
 import BookCreation from './components/books/BookCreation';
 import BookDetails from './components/books/BookDetails';
@@ -24,6 +25,7 @@ function App() {
                         <Route component={NotFound} />
                     </Switch>
                     <Alerts />
+                    <ScrollToTop />
                 </Router>
             </AlertState>
         </BookState>
