@@ -23,14 +23,14 @@ const Books = () => {
         return <LoadingView />
     else if (books.length === 0)
         return (
-            <Fragment>
+            <div id="background" style={{ backgroundColor: '#fdfdfd' }}>
                 <Navbar route={'home'} />
                 <EmptyBooks />
-            </Fragment>
+            </div>
         )
     else {
         return (
-            <Fragment>
+            <div id="background" style={{ backgroundColor: '#fdfdfd' }}>
                 <Navbar route={'home'} />
                 <Link to='/create' id='create-button'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ const Books = () => {
                         <BookCard key={book._id} book={book} />
                     )) }
                 </div>
-            </Fragment>
+            </div>
         )
     }
 

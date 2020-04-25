@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
-import { Bought, Read } from '../svg';
+import { Bought, Read, Genre } from '../svg';
 
 import BookContext from '../../context/book/BookContext';
 
@@ -48,9 +48,8 @@ const BookDetails = () => {
                                 <h2 className="book-title">{ title }</h2>
                                 <p className='book-author'>{ author }</p>
                             </div>
-                            <div>
-                                <div style={{ width: '25px', height: '25px', backgroundColor: '#000' }}></div>
-                                <p className='book-genre'>{ genre }</p>
+                            <div className='book-genre'>
+                                <Genre genre={genre} />
                             </div>
                         </div>
                         <div className="book-infos">
@@ -60,8 +59,17 @@ const BookDetails = () => {
                             </div>
                             <p className='book-isbn'>{ isbn ? `ISBN : ${isbn}` : '' }</p>
                         </div>
-                        <h3>Description</h3>
-                        <p className='book-description'>{ description }</p>
+                        {
+                            description 
+                            ? (
+                                <>
+                                    <h3>Description</h3>
+                                    <p className='book-description'>{ description }</p>
+                                </>
+                            )
+                            : ''
+                        }
+                        
                     </div>
                 </section>
             </div>

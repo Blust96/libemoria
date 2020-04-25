@@ -125,7 +125,7 @@ img {
 h3 {
 	position: relative;
 	margin-top: 1.5rem;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	color: var(--dark-color);
 }
 
@@ -153,6 +153,9 @@ h3::before {
     justify-content: center;
     align-items: center;
 	background-color: var(--primary-color);
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(187, 107, 217, 1);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(187, 107, 217, 1);
+	box-shadow: 0px 0px 12px -5px rgba(187, 107, 217, 1);
 }
 
 /* 2. Book styles */
@@ -172,7 +175,8 @@ h3::before {
 }
 
 .book-header {
-	padding-top: 20px;
+	padding-top: 30px;
+	padding-right: 20px;
 }
 
 .book-header div:last-child {
@@ -188,13 +192,18 @@ h3::before {
 
 .book-author {
 	font-size: 1rem;
+	margin-top: 0.4rem;
     color: var(--primary-color);
 }
 
 .book-genre {
-	font-size: 0.9rem;
-	font-style: italic;
-    color: var(--gray-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	border-radius: var(--border-radius);
+	background-color: var(--secondary-color);
 }
 
 .book-infos {
@@ -205,13 +214,13 @@ h3::before {
 	background-color: var(--light-gray-color);
 }
 
-.book-badges div {
-	margin-right: 5px;
+.book-badges svg {
+	margin-right: 12px;
 }
 
 .book-isbn {
 	font-size: 0.8rem;
-	line-height: 25px;
+	line-height: 20px;
 	color: var(--gray-color);
 }
 
@@ -246,6 +255,7 @@ h3::before {
 .book-card a img~div>div {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-top: 1.5rem;
 }
 

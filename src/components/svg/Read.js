@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Read = props => (
-    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="20" height="20" style={props.style} viewBox="0 0 16 15" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <path fill={
             props.read === undefined ? 
             '#bb6bd9' : 
