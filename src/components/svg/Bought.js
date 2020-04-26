@@ -4,9 +4,9 @@ const Bought = props => (
     <svg width="25" height="20" style={props.style} viewBox="0 0 40 40" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" >
         <path 
         fill={
-            props.wish === undefined ? 
+            props.bought === undefined ? 
             '#bb6bd9' : 
-            props.wish ?
+            props.bought ?
             '#bb6bd9' :
             '#cacaca'
         } 

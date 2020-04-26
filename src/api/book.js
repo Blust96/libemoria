@@ -65,7 +65,7 @@ const createBook = async props => {
             description: props.description,
             favorite: props.favorite,
             read: props.read,
-            wish: props.wish
+            bought: props.bought
         });
         return res;
     } catch(err) {
@@ -94,7 +94,7 @@ const updateBook = async props => {
             description: props.description,
             favorite: props.favorite,
             read: props.read,
-            wish: props.wish
+            bought: props.bought
         });
         return res;
     } catch(err) {

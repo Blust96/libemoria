@@ -29,7 +29,7 @@ const BookDetails = () => {
         cover,
         favorite,
         read,
-        wish
+        bought
     } = book;
 
     if (isLoading) 
@@ -55,7 +55,7 @@ const BookDetails = () => {
                         <div className="book-infos">
                             <div className='book-badges'>
                                 <Read read={read} />
-                                <Bought wish={wish} />
+                                <Bought bought={bought} />
                             </div>
                             <p className='book-isbn'>{ isbn ? `ISBN : ${isbn}` : '' }</p>
                         </div>

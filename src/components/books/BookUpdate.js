@@ -49,7 +49,7 @@ const BookUpdate = () => {
         cover,
         favorite,
         read,
-        wish
+        bought
     } = book;
 
     useEffect(() => {
@@ -135,7 +135,7 @@ const BookUpdate = () => {
                                     <option value="science_fiction">Science-fiction</option>
                                     <option value="policier">Policier</option>
                                     <option value="thriller">Thriller</option>
-                                    <option value="manga">Manga</option>
+                                    <option value="passion">Passion</option>
                                 </select>
                                 <label htmlFor="genre">Genre</label>
                             </div>
@@ -167,8 +167,8 @@ const BookUpdate = () => {
                                 </div>
                                 {/* Envie */}
                                 <div>
-                                    <label htmlFor="wish">Envie</label>
-                                    <input type="checkbox" name="wish" id="wish" ref={register} defaultChecked={wish} />
+                                    <label htmlFor="bought">Acheté</label>
+                                    <input type="checkbox" name="bought" id="bought" ref={register} defaultChecked={bought} />
                                 </div>
                             </div>
                             <input className="button" type="submit" value="Modifier" />
