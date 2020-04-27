@@ -12,10 +12,10 @@ const Books = () => {
 
     // Get books context
     const bookContext = useContext(BookContext);
-    const { isLoading, books, getBooksList } = bookContext;
+    const { isLoading, books, getBooksList, removeBook } = bookContext;
 
     useEffect(() => {
-        getBooksList()
+        getBooksList();
     }, []);
 
     // Render
@@ -37,11 +37,9 @@ const Books = () => {
                         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
                     </svg>
                 </Link>
-                <div className="container">
-                    { books.map(book => (
-                        <BookCard key={book._id} book={book} />
-                    )) }
-                </div>
+                { books.map(book => (
+                    <BookCard key={book._id} book={book} removeBook={() => removeBook(book._id)} />
+                )) }
             </div>
         )
     }

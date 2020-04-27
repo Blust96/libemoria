@@ -140,6 +140,7 @@ h3::before {
 }
 
 #create-button {
+	z-index: 999;
 	position: fixed;
 	bottom: 15px;
 	right: 15px;
@@ -232,12 +233,41 @@ h3::before {
 	text-align: justify;
 }
 
+.book-card-container {
+	display: flex;
+	height: 180px;
+	padding: 0 15px;
+	overflow-x: auto;
+	overflow-y: visible;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;
+}
+
+.book-card-container::-webkit-scrollbar {
+	display: none;
+}
+
 .book-card {
-	margin-top: 1.5rem;
+	width: 100%;
+}
+
+.book-card-item {
+	margin: auto;
+	flex-shrink: 0;
+	height: 80%;
+	overflow: visible;
 	border-radius: var(--border-radius);
 	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+}
+
+.book-delete {
+	margin-left: 30px;
+	height: 50%;
+	width: 30px;
+	border-radius: var(--border-radius);
+	background-color: red;
 }
 
 .book-card a {
