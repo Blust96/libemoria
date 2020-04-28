@@ -233,41 +233,44 @@ h3::before {
 	text-align: justify;
 }
 
-.book-card-container {
+.book-card {
 	display: flex;
-	height: 180px;
-	padding: 0 15px;
+	height: 135px;
 	overflow-x: auto;
-	overflow-y: visible;
+	scroll-snap-type: x mandatory; 
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: none;
-}
-
-.book-card-container::-webkit-scrollbar {
-	display: none;
-}
-
-.book-card {
-	width: 100%;
-}
-
-.book-card-item {
-	margin: auto;
-	flex-shrink: 0;
-	height: 80%;
-	overflow: visible;
+	/* scrollbar-width: none; */
 	border-radius: var(--border-radius);
 	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	background: linear-gradient(to right, white 55%, var(--light-dark-color));
+}
+
+.book-card::-webkit-scrollbar {
+	display: none;
+}
+
+.book-card-item {
+	scroll-snap-align: start;
+	margin: auto;
+	flex-shrink: 0;
+	height: 100%;
+	overflow: visible;
+}
+
+.book-card-content {
+	width: 100%;
+	background-color: white;
+	border-radius: var(--border-radius);
 }
 
 .book-delete {
-	margin-left: 30px;
-	height: 50%;
-	width: 30px;
-	border-radius: var(--border-radius);
-	background-color: red;
+	width: 100px;
+	fill: white;
+	border-radius: 0 var(--border-radius) var(--border-radius) 0;
+	background: transparent;
 }
 
 .book-card a {
@@ -416,7 +419,7 @@ form input[type=submit] {
 	content: '▾';
 	position: absolute;
 	font-size: 2rem;
-  	top: 25px;
+  	top: 20px;
   	right: 20px;
   	color: var(--secondary-color);
   	pointer-events: none;

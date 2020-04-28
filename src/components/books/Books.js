@@ -18,6 +18,11 @@ const Books = () => {
         getBooksList();
     }, []);
 
+    // Remove book confirmation alert
+    const removeBookAlert = id => {
+        if(window.confirm("Êtes-vous sûr de vouloir supprimer ce livre ?")) { removeBook(id) }
+    }
+
     // Render
     if (isLoading) 
         return <LoadingView />
@@ -38,7 +43,7 @@ const Books = () => {
                     </svg>
                 </Link>
                 { books.map(book => (
-                    <BookCard key={book._id} book={book} removeBook={() => removeBook(book._id)} />
+                    <BookCard key={book._id} book={book} removeBook={() => removeBookAlert(book._id)} />
                 )) }
             </div>
         )
