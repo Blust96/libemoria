@@ -153,7 +153,6 @@ const BookState = props => {
 
             book.favorite = !book.favorite;
 
-            isLoading();
             const res = await updateBook(book);
             const modifiedBook = await getBook(res.id);
 

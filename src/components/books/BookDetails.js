@@ -27,7 +27,6 @@ const BookDetails = () => {
         isbn,
         description,
         cover,
-        favorite,
         read,
         bought
     } = book;

@@ -60,7 +60,7 @@ export default (state, action) => {
                 books: state.books.map(book =>
                     book._id === action.payload._id ? action.payload : book
                 ),
-                book: action.payload,
+                book: {...state.book, favorite: action.payload.favorite},
                 isLoading: false
             };
 
