@@ -4,6 +4,7 @@ import { Prompt, useParams, useHistory } from 'react-router-dom';
 
 import { isISBN } from '../../utils';
 
+import { Favorite, Read, Bought } from '../svg';
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 
@@ -157,18 +158,30 @@ const BookUpdate = () => {
                             <div className="book-state">
                                 {/* Favoris */}
                                 <div>
-                                    <label htmlFor="favorite">Favoris</label>
                                     <input type="checkbox" name="favorite" id="favorite" ref={register} defaultChecked={favorite} />
+                                    <label htmlFor="favorite">
+                                        <Favorite />
+                                        <br/>
+                                        Favoris
+                                    </label>
                                 </div>
                                 {/* Lu */}
                                 <div>
-                                    <label htmlFor="read">Lu</label>
                                     <input type="checkbox" name="read" id="read" ref={register} defaultChecked={read} />
+                                    <label htmlFor="read">
+                                        <Read />
+                                        <br/>
+                                        Lu
+                                    </label>
                                 </div>
                                 {/* Envie */}
                                 <div>
-                                    <label htmlFor="bought">Acheté</label>
                                     <input type="checkbox" name="bought" id="bought" ref={register} defaultChecked={bought} />
+                                    <label htmlFor="bought">
+                                        <Bought />
+                                        <br/>
+                                        Acheté
+                                    </label>
                                 </div>
                             </div>
                             <input className="button" type="submit" value="Modifier" />

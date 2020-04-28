@@ -381,7 +381,7 @@ form input[type=submit] {
 }
 
 /* Hiding input file */
-.book-input-cover input {
+.book-input-cover input, .book-state input {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -432,8 +432,25 @@ form input[type=submit] {
 	justify-content: space-between;
 }
 
+.book-state label, .book-state label svg path {
+	fill: var(--gray-color);
+	color: var(--gray-color);
+	transition: 0.2s all ease-in-out;
+}
+
+.book-state input:checked + label, .book-state input:checked + label svg path {
+	fill: var(--primary-color);
+	color: var(--dark-color);
+}
+
+.book-state svg {
+	width: 50px;
+}
+
 .book-state div {
 	display: flex;
+	align-items: center;
+	text-align: center;
 	flex-direction: column-reverse;
 }
 

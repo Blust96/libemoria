@@ -4,6 +4,7 @@ import { Prompt, useHistory } from 'react-router-dom';
 
 import { isISBN } from '../../utils';
 
+import { Favorite, Read, Bought } from '../svg';
 import Navbar from '../layout/Navbar';
 
 import BookContext from '../../context/book/BookContext';
@@ -88,6 +89,7 @@ const BookCreation = () => {
                                </svg>
                             </button>
                         </div>
+                        <h3>Informations</h3>
                         {/* Titre */}
                         <div className={errors.title ? "book-input book-input-error" : "book-input"}>
                             <input name="title" id="title" placeholder="ex. Le Petit Prince" ref={register({ required: true })} />
@@ -130,18 +132,30 @@ const BookCreation = () => {
                         <div className="book-state">
                             {/* Favoris */}
                             <div>
-                                <label htmlFor="favorite">Favoris</label>
                                 <input type="checkbox" name="favorite" id="favorite" ref={register} />
+                                <label htmlFor="favorite">
+                                    <Favorite />
+                                    <br/>
+                                    Favoris
+                                </label>
                             </div>
                             {/* Lu */}
                             <div>
-                                <label htmlFor="read">Lu</label>
                                 <input type="checkbox" name="read" id="read" ref={register} />
+                                <label htmlFor="read">
+                                    <Read />
+                                    <br/>
+                                    Lu
+                                </label>
                             </div>
                             {/* Envie */}
                             <div>
-                                <label htmlFor="bought">Acheté</label>
                                 <input type="checkbox" name="bought" id="bought" ref={register} />
+                                <label htmlFor="bought">
+                                    <Bought />
+                                    <br/>
+                                    Acheté
+                                </label>
                             </div>
                         </div>
                         <input className="button" type="submit" value="Créer" />
