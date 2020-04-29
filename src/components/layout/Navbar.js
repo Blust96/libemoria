@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Favorite, Back, Update } from '../svg';
+import { Favorite, Back, Update, Read } from '../svg';
 
 // Home navbar component
 const HomeBar = () => (
@@ -42,6 +42,9 @@ const UpdateBar = ({ history }) => (
         <button type="button" onClick={() => history.goBack()}>
             <Back />
         </button>
+        <button type="submit" form="update-form">
+            <Read />
+        </button>
     </div>
 );
 
@@ -67,7 +70,7 @@ const Navbar = ({ route, props }) => {
 
     return (
         <header>
-            <nav>
+            <nav id={`nav-${route}`}>
                 { renderNav(route) }
             </nav>
         </header>

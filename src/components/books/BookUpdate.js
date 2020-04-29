@@ -93,7 +93,7 @@ const BookUpdate = () => {
                 <Navbar route={'update'} props={{ id: params.id }}/>
                 <section className="content-section">
                     <div className="container">
-                        <form onSubmit={handleSubmit(onSubmit)}  onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">
+                        <form id="update-form" onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">
                             {/* Couverture */}
                             <div className="book-input-cover">
                                 <input type="file" accept="image/*" capture name="cover" id="cover" ref={register} onChange={event => onCoverChange(event)} />
@@ -114,6 +114,35 @@ const BookUpdate = () => {
                                         <path d="M 10.3125 -0.03125 C 8.589844 -0.03125 7.164063 1.316406 7 3 L 2 3 L 2 5 L 6.96875 5 L 6.96875 5.03125 L 17.03125 5.03125 L 17.03125 5 L 22 5 L 22 3 L 17 3 C 16.84375 1.316406 15.484375 -0.03125 13.8125 -0.03125 Z M 10.3125 2.03125 L 13.8125 2.03125 C 14.320313 2.03125 14.695313 2.429688 14.84375 2.96875 L 9.15625 2.96875 C 9.296875 2.429688 9.6875 2.03125 10.3125 2.03125 Z M 4 6 L 4 22.5 C 4 23.300781 4.699219 24 5.5 24 L 18.59375 24 C 19.394531 24 20.09375 23.300781 20.09375 22.5 L 20.09375 6 Z M 7 9 L 8 9 L 8 22 L 7 22 Z M 10 9 L 11 9 L 11 22 L 10 22 Z M 13 9 L 14 9 L 14 22 L 13 22 Z M 16 9 L 17 9 L 17 22 L 16 22 Z"/>
                                     </svg>
                                 </button>
+                            </div>
+                            <div className="book-state">
+                                {/* Favoris */}
+                                <div>
+                                    <input type="checkbox" name="favorite" id="favorite" ref={register} defaultChecked={favorite} />
+                                    <label htmlFor="favorite">
+                                        <Favorite />
+                                        <br/>
+                                        Favoris
+                                    </label>
+                                </div>
+                                {/* Lu */}
+                                <div>
+                                    <input type="checkbox" name="read" id="read" ref={register} defaultChecked={read} />
+                                    <label htmlFor="read">
+                                        <Read />
+                                        <br/>
+                                        Lu
+                                    </label>
+                                </div>
+                                {/* Envie */}
+                                <div>
+                                    <input type="checkbox" name="bought" id="bought" ref={register} defaultChecked={bought} />
+                                    <label htmlFor="bought">
+                                        <Bought />
+                                        <br/>
+                                        Acheté
+                                    </label>
+                                </div>
                             </div>
                             <h3>Informations</h3>
                             {/* Titre */}
@@ -153,36 +182,6 @@ const BookUpdate = () => {
                                 <label htmlFor="description">
                                     Description
                                 </label>
-                            </div>
-                            <h3>Etats</h3>
-                            <div className="book-state">
-                                {/* Favoris */}
-                                <div>
-                                    <input type="checkbox" name="favorite" id="favorite" ref={register} defaultChecked={favorite} />
-                                    <label htmlFor="favorite">
-                                        <Favorite />
-                                        <br/>
-                                        Favoris
-                                    </label>
-                                </div>
-                                {/* Lu */}
-                                <div>
-                                    <input type="checkbox" name="read" id="read" ref={register} defaultChecked={read} />
-                                    <label htmlFor="read">
-                                        <Read />
-                                        <br/>
-                                        Lu
-                                    </label>
-                                </div>
-                                {/* Envie */}
-                                <div>
-                                    <input type="checkbox" name="bought" id="bought" ref={register} defaultChecked={bought} />
-                                    <label htmlFor="bought">
-                                        <Bought />
-                                        <br/>
-                                        Acheté
-                                    </label>
-                                </div>
                             </div>
                             <input className="button" type="submit" value="Modifier" />
                         </form>
