@@ -39,7 +39,7 @@ const BookDetails = () => {
                 cover 
                 ? { backgroundImage: `linear-gradient(rgba(167, 62, 208, 0.2), white), url(${URL.createObjectURL(cover)})` } 
                 : { backgroundColor: '#edc0ff' } }>
-                <Navbar route={'details'} props={{ id: params.id, book, toggleFavorite }}/>
+                <Navbar props={{ id: params.id, book, toggleFavorite }}/>
                 <section className="content-section">
                     <div className="container">
                         <div className="book-header">

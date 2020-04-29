@@ -66,7 +66,7 @@ const BookCreation = () => {
 
     return (
         <div id="background" style={{ backgroundColor: '#edc0ff' }}>
-            <Navbar route={'create'} />
+            <Navbar />
             <section className="content-section">
                 <div className="container">
                     <form onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">

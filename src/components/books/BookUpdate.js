@@ -90,7 +90,7 @@ const BookUpdate = () => {
                 cover 
                 ? { backgroundImage: `linear-gradient(rgba(167, 62, 208, 0.2), white), url(${URL.createObjectURL(cover)})` } 
                 : { backgroundColor: '#edc0ff' } }>
-                <Navbar route={'update'} props={{ id: params.id }}/>
+                <Navbar props={{ id: params.id }}/>
                 <section className="content-section">
                     <div className="container">
                         <form id="update-form" onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">

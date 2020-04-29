@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { Favorite, Back, Update, Read } from '../svg';
+
+import { getCurrentRoute } from '../../utils.js';
 
 // Home navbar component
 const HomeBar = () => (
@@ -49,10 +51,14 @@ const UpdateBar = ({ history }) => (
 );
 
 // Rendering navbar component
-const Navbar = ({ route, props }) => {
+const Navbar = ({ props }) => {
 
     // Get routes history
     const history = useHistory();
+
+    // Get route location
+    const location = useLocation();
+    const route = getCurrentRoute(location.pathname);
 
     const renderNav = (route) => {
         switch(route) {

@@ -5,6 +5,8 @@ export const generateId = () => new Date().toISOString();
 
 /**
  * Verify ISBN-10 or ISBN-13 input with regex and checksum
+ * 
+ * @param {String} str 
  */
 export const isISBN = str => {
 
@@ -45,6 +47,21 @@ export const isISBN = str => {
 
 }
 
+/**
+ * Get current route from location pathname
+ * 
+ * @param {String} str 
+ */
+export const getCurrentRoute = str => {
+    const regex = /[^/]+/;
+    return str.match(regex) ? str.match(regex)[0] : 'home';
+}
+
+/**
+ * Check if a string is empty
+ * 
+ * @param {String} str 
+ */
 export const isEmpty = str => {
     return (0 === str || !str.trim() || !str);
 }
