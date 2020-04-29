@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navbar from '../layout/Navbar';
@@ -7,6 +7,7 @@ import EmptyBooks from './EmptyBooks';
 import BookCard from './BookCard';
 
 import BookContext from '../../context/book/BookContext';
+import AlertContext from '../../context/alert/AlertContext';
 
 const Books = () => {
 
@@ -14,13 +15,21 @@ const Books = () => {
     const bookContext = useContext(BookContext);
     const { isLoading, books, getBooksList, removeBook } = bookContext;
 
+    // Get alerts context
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
+    
+
     useEffect(() => {
         getBooksList();
     }, []);
 
     // Remove book confirmation alert
-    const removeBookAlert = id => {
-        if(window.confirm("Êtes-vous sûr de vouloir supprimer ce livre ?")) { removeBook(id) }
+    const removeBookAlert = async id => {
+        if(window.confirm("Êtes-vous sûr de vouloir supprimer ce livre ?")) { 
+            await removeBook(id);
+            setAlert('Le livre a bien été supprimé.', 'validation');
+        }
     }
 
     // Render

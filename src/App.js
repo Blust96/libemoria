@@ -17,6 +17,7 @@ function App() {
         <BookState>
             <AlertState>
                 <Router>
+                    <Alerts />
                     <Switch>
                         <Route exact path='/' component={Books} />
                         <Route exact path='/create' component={BookCreation} />
@@ -24,7 +25,6 @@ function App() {
                         <Route exact path='/update/:id' component={BookUpdate} />
                         <Route component={NotFound} />
                     </Switch>
-                    <Alerts />
                     <ScrollToTop />
                 </Router>
             </AlertState>

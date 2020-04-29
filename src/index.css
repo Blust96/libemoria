@@ -4,6 +4,7 @@
  * 1. General styles
  * 2. Book styles
  * 3. Form styles
+ * 4. Alert styles
  *
  */
 
@@ -21,6 +22,7 @@
 	--light-dark-color: #4f4f4f;
 	--gray-color: #cacaca;
 	--light-gray-color: #fdfdfd;
+	--validation-color:  #60ff8a;
 	--error-color:  #ff5252;
 	--border-radius: 8px;
 }
@@ -93,6 +95,11 @@ header {
 	justify-content: space-between;
 }
 
+#nav-home {
+	background-color: white;
+	border-bottom: 2px solid var(--primary-color);
+}
+
 img {
 	width: 100%;
 }
@@ -140,7 +147,7 @@ h3::before {
 }
 
 #create-button {
-	z-index: 999;
+	z-index: 998;
 	position: fixed;
 	bottom: 15px;
 	right: 15px;
@@ -235,9 +242,10 @@ h3::before {
 
 .book-card {
 	display: flex;
+	margin: 15px auto;
 	height: 135px;
 	overflow-x: auto;
-	scroll-snap-type: x mandatory; 
+	/* scroll-snap-type: x mandatory;  */
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: none;
 	/* scrollbar-width: none; */
@@ -254,7 +262,6 @@ h3::before {
 
 .book-card-item {
 	scroll-snap-align: start;
-	margin: auto;
 	flex-shrink: 0;
 	height: 100%;
 	overflow: visible;
@@ -303,7 +310,7 @@ form {
 form input[type=submit] {
 	max-width: 200px;
 	width: 80%;
-	margin: 1rem auto;
+	margin: 2rem auto;
 	padding: 1rem;
 	color: white;
 	font-size: 1rem;
@@ -427,7 +434,7 @@ form input[type=submit] {
 
 .book-state {
 	width: 80%;
-	margin: 1.5rem auto;
+	margin: 1.5rem auto 0 auto;
 	display: flex;
 	justify-content: space-between;
 }
@@ -458,4 +465,45 @@ form input[type=submit] {
 	outline: none;
 	color: var(--error-color);
 	border-color: var(--error-color);
+}
+
+/* 3. Alert styles */
+
+.alert {
+	z-index: 999;
+	position: fixed;
+	bottom: 15px;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: var(--light-gray-color);
+	color: var(--light-dark-color);
+	border-radius: var(--border-radius);
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+}
+
+.alert button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	line-height:30px;
+	border-radius: 50%;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: white;
+}
+
+.alert-validation {
+	border: 1px solid var(--validation-color);
+}
+
+.alert-validation button {
+	background-color: var(--validation-color);
 }

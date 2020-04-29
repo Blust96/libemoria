@@ -132,7 +132,6 @@ const BookState = props => {
 
         try {
 
-            isLoading();
             const res = await deleteBook(id);
 
             dispatch({
