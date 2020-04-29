@@ -6,6 +6,7 @@ import LoadingView from '../layout/LoadingView';
 import { Bought, Read, Genre } from '../svg';
 
 import BookContext from '../../context/book/BookContext';
+import AlertContext from '../../context/alert/AlertContext';
 
 const BookDetails = () => {
 
@@ -13,12 +14,23 @@ const BookDetails = () => {
     const bookContext = useContext(BookContext);
     const { isLoading, toggleFavorite, book, setBook } = bookContext;
 
+    // Get alerts context
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
+
     // Get params
     const params = useParams();
 
     useEffect(() => {
         setBook(params.id)
     }, []);
+
+    const setFavorite = async () => {
+        await toggleFavorite(book);
+        book.favorite
+        ? setAlert(`"${title}" a été ajouté aux favoris.`, 'validation')
+        : setAlert(`"${title}" a été retiré des favoris.`, 'validation')
+    }
 
     const {
         title,
@@ -39,7 +51,7 @@ const BookDetails = () => {
                 cover 
                 ? { backgroundImage: `linear-gradient(rgba(167, 62, 208, 0.2), white), url(${URL.createObjectURL(cover)})` } 
                 : { backgroundColor: '#edc0ff' } }>
-                <Navbar props={{ id: params.id, book, toggleFavorite }}/>
+                <Navbar props={{ id: params.id, book, setFavorite }}/>
                 <section className="content-section">
                     <div className="container">
                         <div className="book-header">

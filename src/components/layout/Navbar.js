@@ -28,7 +28,7 @@ const DetailsBar = ({ props }) => (
             <Back />
         </Link>
         <div>
-            <button type="button" onClick={() => props.toggleFavorite(props.book)}>
+            <button type="button" onClick={() => props.setFavorite()}>
                 <Favorite favorite={props.book.favorite} style={{ marginTop: 2 }} />
             </button>
             <Link className="button" to={`/update/${props.id}`}>
