@@ -18,6 +18,9 @@ const CreateBar = () => (
         <Link className="button" to='/'>
             <Back />
         </Link>
+        <button type="submit" form="creation-form">
+            <Read />
+        </button>
     </div>
 );
 

@@ -69,7 +69,7 @@ const BookCreation = () => {
             <Navbar />
             <section className="content-section">
                 <div className="container">
-                    <form onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">
+                    <form id="creation-form" onSubmit={handleSubmit(onSubmit)} onChange={event => { setIsBlocking(event.target.value.length > 0) }} autoComplete="off">
                         {/* Couverture */}
                         <div className="book-input-cover">
                             <input type="file" accept="image/*" capture name="cover" id="cover" ref={register} onChange={event => onCoverChange(event)} />
@@ -158,7 +158,6 @@ const BookCreation = () => {
                                 </label>
                             </div>
                         </div>
-                        <input className="button" type="submit" value="Créer" />
                     </form>
                 </div>
             </section>

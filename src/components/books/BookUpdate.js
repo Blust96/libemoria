@@ -182,7 +182,6 @@ const BookUpdate = () => {
                                     Description
                                 </label>
                             </div>
-                            <input className="button" type="submit" value="Modifier" />
                         </form>
                     </div>
                 </section>
