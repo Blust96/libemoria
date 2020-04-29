@@ -168,7 +168,6 @@ const BookState = props => {
 
     // Reset cover
     const resetCover = () => {
-        isLoading();
         dispatch({ type: RESET_COVER });
     }
 

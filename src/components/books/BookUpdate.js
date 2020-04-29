@@ -56,7 +56,6 @@ const BookUpdate = () => {
     useEffect(() => {
         submitted && history.push(`/details/${params.id}`);
         setBook(params.id);
-        setBookCover(book.cover);
     }, [submitted]);
 
     // onSubmit function
@@ -74,8 +73,8 @@ const BookUpdate = () => {
     }
 
     // Reset current cover input value
-    const resetBookCover = () => {
-        resetCover();
+    const resetBookCover = async () => {
+        await resetCover();
         if(fileEvent) {
             fileEvent.target.value = '';
             setBookCover(null);
