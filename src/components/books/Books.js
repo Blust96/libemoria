@@ -50,9 +50,11 @@ const Books = () => {
                 <Link to='/create' id='create-button'>
                     <Plus />
                 </Link>
-                { books.map(book => (
-                    <BookCard key={book._id} book={book} removeBook={() => removeBookAlert(book._id)} />
-                )) }
+                <div className="container" id="book-container">
+                    { books.map(book => (
+                        <BookCard key={book._id} book={book} removeBook={() => removeBookAlert(book._id)} />
+                    )) }
+                </div>
             </div>
         )
     }

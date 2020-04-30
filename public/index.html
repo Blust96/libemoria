@@ -7,14 +7,23 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Book Reminder vous permet de classer vos livres selon leur genre, votre avancée du livre. Vous pouvez aussi ajouter vos envies d'achats."
+      content="Libemoria vous permet de classer vos livres selon leur genre, votre avancée du livre. Vous pouvez aussi ajouter vos envies d'achats."
     />
-    <link rel="apple-touch-icon" href="logo192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Libemoria">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-startup-image" href="/launchscreen.jpg">
+    <link rel="apple-touch-icon" sizes="192x192" href="logo192.png" type="image/png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Book Reminder</title>
+    <title>Libemoria</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      document.ontouchmove = ev => {
+        ev.stopPropagation();
+      }
+    </script>
   </body>
 </html>

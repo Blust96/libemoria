@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Favorite, Bought, Read, Genre } from '../svg';
 
 const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, bought }, removeBook }) => (
-    <article className='container book-card'>
+    <article className='book-card'>
         <Link className='book-card-item book-card-content' to={`/details/${_id}`}>
             {
                 cover
