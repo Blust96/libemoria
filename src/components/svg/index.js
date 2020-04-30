@@ -4,3 +4,7 @@ export { default as Update } from './Update';
 export { default as Bought } from './Bought';
 export { default as Read } from './Read';
 export { default as Genre } from './Genre';
+export { default as Logo } from './Logo';
+export { default as Plus } from './Plus';
+export { default as Delete } from './Delete';
+export { default as Capture } from './Capture';

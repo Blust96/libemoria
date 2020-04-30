@@ -13,7 +13,7 @@ const BookCard = ({ book: { _id, title, author, genre, cover, favorite, read, bo
             }
             <div>
                 <h2 className="book-title">{ title }</h2>
-                <p><span className='book-author'>{ author }</span></p>
+                <p className='book-author'>{ author }</p>
                 <div>
                     <div className='book-badges'>
                         { favorite ? <Favorite favorite={favorite} /> : '' }

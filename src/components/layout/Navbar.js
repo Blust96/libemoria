@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
-import { Favorite, Back, Update, Read } from '../svg';
+import { Favorite, Back, Update, Read, Logo } from '../svg';
 
 import { getCurrentRoute } from '../../utils.js';
 
 // Home navbar component
 const HomeBar = () => (
     <div className="container nav-container">
-        <h1>Home</h1>
+        <Logo />
     </div>
 );
 

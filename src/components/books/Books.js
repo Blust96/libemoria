@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Plus } from '../svg';
 import Navbar from '../layout/Navbar';
 import LoadingView from '../layout/LoadingView';
 import EmptyBooks from './EmptyBooks';
@@ -47,9 +48,7 @@ const Books = () => {
             <div id="background" style={{ backgroundColor: '#fdfdfd' }}>
                 <Navbar />
                 <Link to='/create' id='create-button'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-                    </svg>
+                    <Plus />
                 </Link>
                 { books.map(book => (
                     <BookCard key={book._id} book={book} removeBook={() => removeBookAlert(book._id)} />
