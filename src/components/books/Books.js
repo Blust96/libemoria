@@ -40,6 +40,9 @@ const Books = () => {
         return (
             <div id="background" style={{ backgroundColor: '#fdfdfd' }}>
                 <Navbar />
+                <Link to='/create' id='create-button'>
+                    <Plus />
+                </Link>
                 <EmptyBooks />
             </div>
         )

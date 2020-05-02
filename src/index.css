@@ -25,6 +25,7 @@
 	--validation-color:  #60ff8a;
 	--error-color:  #ff5252;
 	--border-radius: 8px;
+	--nav-height: 70px;
 }
 
 /* 1. General styles */
@@ -71,7 +72,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	min-height: 70px;
+	min-height: var(--nav-height);
 }
 
 .nav-container button, .nav-container a {
@@ -118,6 +119,23 @@ img {
 	margin: 0 auto;
 }
 
+#empty-books {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#empty-books img {
+	width: 65%;
+	max-width: 100%;
+	margin-top: 8vh;
+}
+
+#empty-books h2, #empty-books p {
+	margin-top: 10px;
+}
+
 #book-container {
 	padding: 10px 0;
 }
@@ -125,7 +143,7 @@ img {
 .content-section {
 	background: white;
 	border-radius: 50px 50px 0 0;
-	min-height: calc(100% - 70px);
+	min-height: calc(100% - var(--nav-height));
 	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
