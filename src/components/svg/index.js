@@ -8,3 +8,5 @@ export { default as Logo } from './Logo';
 export { default as Plus } from './Plus';
 export { default as Delete } from './Delete';
 export { default as Capture } from './Capture';
+export { default as Reset } from './Reset';
+export { default as Search } from './Search';

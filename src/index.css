@@ -2,9 +2,10 @@
  * Styles guide
  *
  * 1. General styles
- * 2. Book styles
- * 3. Form styles
- * 4. Alert styles
+ * 2. Filters
+ * 3. Book styles
+ * 4. Form styles
+ * 5. Alert styles
  *
  */
 
@@ -12,6 +13,30 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+ul, li {
+	text-decoration: none;
+	list-style-type: none;
+}
+
+/* Hiding defaut settings */
+input, textarea, select {
+	border: none;
+	border-radius: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+	outline: none;
+}
+
+select::-ms-expand {
+	display: none;
 }
 
 :root {
@@ -25,7 +50,8 @@
 	--validation-color:  #60ff8a;
 	--error-color:  #ff5252;
 	--border-radius: 8px;
-	--nav-height: 70px;
+	--nav-height: 69px;
+	--nav-border-width: 1px;
 }
 
 /* 1. General styles */
@@ -38,6 +64,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-ms-overflow-style: none;
 	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-webkit-scrollbar-width: none;
 	overscroll-behavior: none;
 }
 
@@ -64,7 +92,8 @@ button, .button {
 
 header {
 	z-index: 999;
-    position: sticky;
+	position: -webkit-sticky;
+	position: sticky;
     top: 0px;
 }
 
@@ -75,7 +104,7 @@ header {
 	min-height: var(--nav-height);
 }
 
-.nav-container button, .nav-container a {
+.nav-container .button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -96,19 +125,21 @@ header {
 
 #nav-home {
 	background-color: white;
-	border-bottom: 2px solid var(--primary-color);
+	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
+	/* border-bottom: var(--nav-border-width) solid var(--primary-color); */
 }
 
 img {
 	width: 100%;
 }
 
-#root {
+#root, #background {
 	height: 100vh;
 }
 
 #background {
-	height: 100vh;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top center;
@@ -119,23 +150,6 @@ img {
 	margin: 0 auto;
 }
 
-#empty-books {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-#empty-books img {
-	width: 65%;
-	max-width: 100%;
-	margin-top: 8vh;
-}
-
-#empty-books h2, #empty-books p {
-	margin-top: 10px;
-}
-
 #book-container {
 	padding: 10px 0;
 }
@@ -143,7 +157,7 @@ img {
 .content-section {
 	background: white;
 	border-radius: 50px 50px 0 0;
-	min-height: calc(100% - var(--nav-height));
+	min-height: calc(100vh - var(--nav-height));
 	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
@@ -186,7 +200,96 @@ h3::before {
 	box-shadow: 0px 0px 12px -5px rgba(187, 107, 217, 1);
 }
 
-/* 2. Book styles */
+#empty-books {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#empty-books img {
+	width: 65%;
+	max-width: 100%;
+	margin-top: 60px;
+}
+
+#empty-books h2 {
+	margin-top: 20px;
+}
+
+#empty-books p {
+	margin-top: 5px;
+}
+
+/* 2. Filters */
+
+#genre-filters-container, #genre-filters, #search-filter {
+	display: flex;
+	align-items: center;
+}
+
+#search-filter {
+	width: 70%;
+	justify-content: left;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--primary-color);
+	padding: 10px 12px;
+}
+
+#search-filter input {
+	width: 100%;
+	margin-left: 10px;
+	font-size: 0.8rem;
+	color: var(--primary-color);
+	background-color: transparent;
+}
+
+#search-filter input::placeholder {
+	color: var(--gray-color);
+}
+
+#search-filter button {
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+	border-radius: 100%;
+	color: white;
+	background-color: var(--primary-color);
+}
+
+#genre-filters-container {
+	position: --webkit-sticky;
+	position: sticky;
+	top: calc(var(--nav-height) + var(--nav-border-width) + 10px);
+	margin-top: 10px;
+	padding: 0 5px;
+}
+
+#genre-filters {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	-webkit-scrollbar-width: none;
+}
+
+#genre-filters-container li {
+	flex-shrink: 0;
+	margin: 0 5px;
+	padding: 2px 12px;
+	color: var(--gray-color);
+	background-color: var(--light-gray-color);
+	border: 2px solid var(--gray-color);
+	border-radius: var(--border-radius);
+	transition: 0.2s all ease-in-out;
+}
+
+#genre-filters-container .active {
+	color: white;
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+/* 3. Book styles */
 
 .book-cover {
     min-height: 120px;
@@ -276,7 +379,8 @@ h3::before {
 	/* scroll-snap-type: x mandatory;  */
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: none;
-	/* scrollbar-width: none; */
+	scrollbar-width: none;
+	-webkit-scrollbar-width: none;
 	border-radius: var(--border-radius);
 	-webkit-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.6);
@@ -330,7 +434,7 @@ h3::before {
 	white-space: nowrap;
 }
 
-/* 3. Form styles */
+/* 4. Form styles */
 
 form {
 	position: relative;
@@ -359,10 +463,6 @@ form {
     resize: none;
 }
 
-.book-input select::-ms-expand {
-	display: none;
-}
-
 .book-input input, .book-input textarea, .book-input select, .book-input label {
 	transition: 0.2s all ease-in-out;
 }
@@ -370,18 +470,11 @@ form {
 .book-input input, .book-input textarea, .book-input select {
     margin-top: 0.5rem;
 	padding: 10px;
-	border: none;
-	border-radius: 0;
 	border-bottom: 2px solid var(--secondary-color); 
 	background-color: var(--light-gray-color);
 	color: var(--light-dark-color);
 	font-weight: bold;
-	/* Hiding defaut settings */
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
-	-o-appearance: none;
-	appearance: none;
+	
 }
 
 .book-input input::placeholder, .book-input textarea::placeholder {
@@ -390,7 +483,6 @@ form {
 }
 
 .book-input input:focus, .book-input textarea:focus, .book-input select:focus {
-	outline: none;
 	border-color: var(--primary-color);
 }
 
@@ -482,12 +574,11 @@ form {
 }
 
 .book-input-error input, .book-input-error label, .book-input-error input:focus, .book-input-error input:focus + label {
-	outline: none;
 	color: var(--error-color);
 	border-color: var(--error-color);
 }
 
-/* 3. Alert styles */
+/* 5. Alert styles */
 
 .alert {
 	z-index: 999;

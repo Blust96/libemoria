@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { Favorite, Back, Update, Read, Logo } from '../svg';
+import BookSearchFilter from '../books/BookSearchFilter';
 
 import { getCurrentRoute } from '../../utils.js';
 
@@ -9,6 +10,7 @@ import { getCurrentRoute } from '../../utils.js';
 const HomeBar = () => (
     <div className="container nav-container">
         <Logo />
+        <BookSearchFilter />
     </div>
 );
 
@@ -18,7 +20,7 @@ const CreateBar = () => (
         <Link className="button" to='/'>
             <Back />
         </Link>
-        <button type="submit" form="creation-form">
+        <button className="button" type="submit" form="creation-form">
             <Read />
         </button>
     </div>
@@ -31,7 +33,7 @@ const DetailsBar = ({ props }) => (
             <Back />
         </Link>
         <div>
-            <button type="button" onClick={() => props.setFavorite()}>
+            <button className="button" type="button" onClick={() => props.setFavorite()}>
                 <Favorite favorite={props.book.favorite} style={{ marginTop: 2 }} />
             </button>
             <Link className="button" to={`/update/${props.id}`}>
@@ -44,10 +46,10 @@ const DetailsBar = ({ props }) => (
 // Update navbar component
 const UpdateBar = ({ history }) => (
     <div className="container nav-container">
-        <button type="button" onClick={() => history.goBack()}>
+        <button className="button" type="button" onClick={() => history.goBack()}>
             <Back />
         </button>
-        <button type="submit" form="update-form">
+        <button className="button" type="submit" form="update-form">
             <Read />
         </button>
     </div>

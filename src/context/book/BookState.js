@@ -9,6 +9,12 @@ import {
     REMOVE_BOOK,
     TOGGLE_FAVORITE,
     RESET_COVER,
+    FILTER_BOOKS,
+    UPDATE_SEARCH_FILTER,
+    RESET_SEARCH_FILTER,
+    UPDATE_GENRES_FILTER,
+    RESET_GENRES_FILTER,
+    CLEAR_FILTERS,
     IS_LOADING,
 } from '../types';
 
@@ -18,6 +24,9 @@ const BookState = props => {
 
     const initialState = {
         books: [],
+        filteredBooks: null,
+        searchFilter: '',
+        genresFilter: [],
         book: {},
         isLoading: false
     };
@@ -88,6 +97,8 @@ const BookState = props => {
                 payload: addedBook
             });
 
+            filterBooks();
+
         } catch(err) {
             console.log(err);
         }
@@ -121,6 +132,8 @@ const BookState = props => {
                 payload: modifiedBook
             });
 
+            filterBooks();
+
         } catch(err) {
             console.log(err);
         }
@@ -138,6 +151,8 @@ const BookState = props => {
                 type: REMOVE_BOOK,
                 payload: id
             });
+
+            filterBooks();
 
         } catch(err) {
             console.log(err);
@@ -160,6 +175,8 @@ const BookState = props => {
                 payload: modifiedBook
             });
 
+            filterBooks();
+
         } catch(err) {
             console.log(err);
         }
@@ -171,6 +188,39 @@ const BookState = props => {
         dispatch({ type: RESET_COVER });
     }
 
+    // Update filtered books by search input
+    const filterBooks = () => {
+        dispatch({ type: FILTER_BOOKS });
+    }
+
+    // Update search filter
+    const updateSearchFilter = input => {
+        dispatch({ type: UPDATE_SEARCH_FILTER, payload: input });
+        filterBooks();
+    }
+
+    // Reset search filter
+    const resetSearchFilter = () => {
+        dispatch({ type: RESET_SEARCH_FILTER });
+        filterBooks();
+    }
+
+    // Update genres filter
+    const updateGenresFilter = genres => {
+        dispatch({ type: UPDATE_GENRES_FILTER, payload: genres });
+        filterBooks();
+    }
+
+    // Reset genres filteredBooks
+    const resetGenresFilter = () => {
+        dispatch({ type: RESET_GENRES_FILTER });
+        filterBooks();
+    }
+
+    const clearFilters = () => {
+        dispatch({ type: CLEAR_FILTERS });
+    }
+
     // Set app state to loading
     const isLoading = () => dispatch({ type: IS_LOADING });
 
@@ -178,6 +228,9 @@ const BookState = props => {
         <BookContext.Provider
             value={{
                 books: state.books,
+                filteredBooks: state.filteredBooks,
+                searchFilter: state.searchFilter,
+                genresFilter: state.genresFilter,
                 book: state.book,
                 isLoading: state.isLoading,
                 getBooksList,
@@ -186,7 +239,12 @@ const BookState = props => {
                 modifyBook,
                 removeBook,
                 toggleFavorite,
-                resetCover
+                resetCover,
+                updateSearchFilter,
+                resetSearchFilter,
+                updateGenresFilter,
+                resetGenresFilter,
+                clearFilters,
             }}
         >
             {props.children}
