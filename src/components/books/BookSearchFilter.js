@@ -26,16 +26,16 @@ const BookSearchFilter = () => {
             <input
                 ref={input}
                 type='text'
-                placeholder="Filtrer par titre, auteur ou ISBN"
+                placeholder="Titre, auteur ou ISBN ..."
                 onChange={onChange}
             />
             {
-                searchFilter !== ''
-                ? (
-                    <button type="button" onClick={() => resetSearchFilter()}>
-                        x
-                    </button>
-                ) : null
+                <button type="button" onClick={ () => resetSearchFilter() }
+                className={ searchFilter ? 'active' : '' }
+                disabled={ !searchFilter }>
+                    x
+                </button>
+                
             }
         </div>
     )
