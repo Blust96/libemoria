@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PWAPrompt from 'react-ios-pwa-prompt'
 
 import { Plus } from '../svg';
 import Navbar from '../layout/Navbar';
@@ -72,6 +73,14 @@ const Books = () => {
                     </>
                 )
             }
+            <PWAPrompt 
+                promptOnVisit={2} 
+                copyTitle="Ajouter à l'écran d'accueil"
+                copyBody="Ce site peut être utilisé comme une application. Ajoutez-le à votre écran d'accueil pour l'utiliser en plein écran, et sans connexion."
+                copyShareButtonLabel="1) Appuyez sur le bouton 'Partager'"
+                copyAddHomeButtonLabel="2) Appuyez sur 'Ajouter à l'écran d'accueil'"
+                copyClosePrompt="Annuler"
+            />
         </div>
     );
 
